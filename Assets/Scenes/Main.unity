@@ -9382,7 +9382,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1677001991}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2136019547}
+        m_MethodName: NewPlayerButtonOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1677001991
@@ -11631,6 +11642,7 @@ MonoBehaviour:
   PlayerUIPrefab: {fileID: 1432086791518780, guid: e6ee8d9fb8092b84aa834b2aa4ca0b01,
     type: 2}
   Panel: {fileID: 1711608292}
+  NewPlayerButton: {fileID: 1677001990}
 --- !u!4 &2136019548
 Transform:
   m_ObjectHideFlags: 0

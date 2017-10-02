@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
     {
         //Show popup
         //popup allows name to be entered
-        //add name to list of players
+        //if Players.Count < 15, add name to list of players
         //instantiate the new player into the panel
         //testing stuff below
         InstantiateNewPlayer(new PlayerData("Danielle", 10));
