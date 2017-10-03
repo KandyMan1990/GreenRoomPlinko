@@ -34,21 +34,22 @@ public class UIManager : MonoBehaviour
         //write all player data from players to file
     }
 
-    public void NewPlayerButtonOnClick()
+    public void AddNewPlayerButtonOnClick(Text name)
     {
-        //Show popup
-        //popup allows name to be entered
         //if Players.Count < 15, add name to list of players
         //instantiate the new player into the panel
         //testing stuff below
-        InstantiateNewPlayer(new PlayerData("Danielle", 10));
+        PlayerData pd = new PlayerData(name.text);
+        Players.Add(pd);
+        InstantiateNewPlayer(pd);
     }
 
     void InstantiateNewPlayer(PlayerData player)
     {
         GameObject go = Instantiate(PlayerUIPrefab, Panel);
-        Text[] texts = go.GetComponentsInChildren<Text>();
-        texts[0].text = player.Name;
-        texts[1].text = player.Wins.ToString();
+        PlayerUIComponent ui = go.GetComponent<PlayerUIComponent>();
+
+        ui.SetName(player.Name);
+        ui.SetWins(player.Wins);
     }
 }
