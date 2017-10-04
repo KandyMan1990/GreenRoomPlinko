@@ -34,12 +34,12 @@ public class UIManager : MonoBehaviour
         //write all player data from players to file
     }
 
-    public void AddNewPlayerButtonOnClick(Text name)
+    public void AddNewPlayerButtonOnClick(string name)
     {
         //if Players.Count < 15, add name to list of players
         //instantiate the new player into the panel
         //testing stuff below
-        PlayerData pd = new PlayerData(name.text);
+        PlayerData pd = new PlayerData(name);
         Players.Add(pd);
         InstantiateNewPlayer(pd);
     }
