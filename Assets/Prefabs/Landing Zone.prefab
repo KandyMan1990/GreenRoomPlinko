@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4817504606031104}
   - component: {fileID: 212021503013812760}
+  - component: {fileID: 114832065054955454}
+  - component: {fileID: 61123281489510568}
   m_Layer: 0
   m_Name: Landing Zone
   m_TagString: Untagged
@@ -40,6 +42,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61123281489510568
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538789394843178}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.01, y: 0.01}
+    newSize: {x: 0.66, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 1
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &114832065054955454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538789394843178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f050a46fa33c605408797c008e42caee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WinColour: {r: 1, g: 0.1254902, b: 0, a: 1}
+  LoseColour: {r: 0, g: 1, b: 0.49803922, a: 1}
+  InstantWinColour: {r: 0.887, g: 0.953, b: 0.109, a: 1}
+  winZone: 0
 --- !u!212 &212021503013812760
 SpriteRenderer:
   m_ObjectHideFlags: 1

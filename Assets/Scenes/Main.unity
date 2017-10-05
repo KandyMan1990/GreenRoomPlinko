@@ -812,6 +812,11 @@ Prefab:
       propertyPath: m_Name
       value: Landing Zone (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 114832065054955454, guid: 2c400807e7905e84fab5718e8e59bdb7,
+        type: 2}
+      propertyPath: winZone
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
   m_IsPrefabParent: 0
@@ -1428,6 +1433,11 @@ Prefab:
       propertyPath: m_Name
       value: Landing Zone (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 114832065054955454, guid: 2c400807e7905e84fab5718e8e59bdb7,
+        type: 2}
+      propertyPath: winZone
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
   m_IsPrefabParent: 0
@@ -1576,6 +1586,11 @@ Prefab:
     - target: {fileID: 1538789394843178, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
       propertyPath: m_Name
       value: Landing Zone (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832065054955454, guid: 2c400807e7905e84fab5718e8e59bdb7,
+        type: 2}
+      propertyPath: winZone
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
@@ -4529,6 +4544,11 @@ Prefab:
       propertyPath: m_Name
       value: Landing Zone (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 114832065054955454, guid: 2c400807e7905e84fab5718e8e59bdb7,
+        type: 2}
+      propertyPath: winZone
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
   m_IsPrefabParent: 0
@@ -5099,6 +5119,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114832065054955454, guid: 2c400807e7905e84fab5718e8e59bdb7,
+        type: 2}
+      propertyPath: winZone
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
   m_IsPrefabParent: 0
@@ -5291,6 +5316,11 @@ Prefab:
     - target: {fileID: 1538789394843178, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
       propertyPath: m_Name
       value: Landing Zone (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832065054955454, guid: 2c400807e7905e84fab5718e8e59bdb7,
+        type: 2}
+      propertyPath: winZone
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
@@ -6136,6 +6166,11 @@ Prefab:
     - target: {fileID: 1538789394843178, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
       propertyPath: m_Name
       value: Landing Zone (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832065054955454, guid: 2c400807e7905e84fab5718e8e59bdb7,
+        type: 2}
+      propertyPath: winZone
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
@@ -9148,6 +9183,11 @@ Prefab:
     - target: {fileID: 1538789394843178, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
       propertyPath: m_Name
       value: Landing Zone (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114832065054955454, guid: 2c400807e7905e84fab5718e8e59bdb7,
+        type: 2}
+      propertyPath: winZone
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
