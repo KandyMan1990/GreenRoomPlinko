@@ -14,11 +14,7 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        //read in all player data (players, wins) into Players
-        //testing stuff below
-        Players.Add(new PlayerData("Jim"));
-        Players.Add(new PlayerData("Jam", 3));
-        Players.Add(new PlayerData("Dude", 5));
+        Players = Data.Load();
     }
 
     void Start()
@@ -31,7 +27,7 @@ public class UIManager : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        //write all player data from players to file
+        Data.Save(Players);
     }
 
     public void AddNewPlayerButtonOnClick(string name)
