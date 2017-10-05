@@ -49,7 +49,7 @@ public static class Data
         }
         catch(SerializationException e)
         {
-            Debug.LogError("Failed to load, creating new save file.  Reason: " + e.Message);
+            Debug.LogError("Failed to load, returning new empty list.  Reason: " + e.Message);
             data = new List<PlayerData>();
         }
         finally

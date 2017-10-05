@@ -20,9 +20,22 @@ public class AddNewPlayer : MonoBehaviour
             return;
         }
 
-        errorMessage.gameObject.SetActive(false);
-
         uiManager.AddNewPlayerButtonOnClick(input.text);
+
+        CloseAndClear();
+    }
+
+    public void OnEnter()
+    {
+        if (!Input.GetKeyDown(KeyCode.Return))
+            return;
+
+        OnClick();
+    }
+
+    public void CloseAndClear()
+    {
+        errorMessage.gameObject.SetActive(false);
 
         input.text = string.Empty;
 

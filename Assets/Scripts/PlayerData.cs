@@ -9,10 +9,4 @@ public class PlayerData
         Name = name;
         Wins = 0;
     }
-
-    public PlayerData(string name, int wins)
-    {
-        Name = name;
-        Wins = wins;
-    }
 }
