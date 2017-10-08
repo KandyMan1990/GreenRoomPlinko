@@ -6,6 +6,8 @@ public class PlayerUIComponent : MonoBehaviour
     [SerializeField]
     Text PlayerName;
     [SerializeField]
+    Text Played;
+    [SerializeField]
     Text Wins;
 
     bool InGame;
@@ -18,6 +20,11 @@ public class PlayerUIComponent : MonoBehaviour
     public void SetName(string value)
     {
         PlayerName.text = value;
+    }
+
+    public void SetPlayed(int value)
+    {
+        Played.text = value.ToString();
     }
 
     public void SetWins(int value)

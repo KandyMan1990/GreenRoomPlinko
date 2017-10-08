@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
         PlayerUIComponent ui = go.GetComponent<PlayerUIComponent>();
 
         ui.SetName(player.Name);
+        ui.SetPlayed(player.Played);
         ui.SetWins(player.Wins);
     }
 }
