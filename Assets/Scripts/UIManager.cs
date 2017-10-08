@@ -45,8 +45,6 @@ public class UIManager : MonoBehaviour
         GameObject go = Instantiate(PlayerUIPrefab, Panel);
         PlayerUIComponent ui = go.GetComponent<PlayerUIComponent>();
 
-        ui.SetName(player.Name);
-        ui.SetPlayed(player.Played);
-        ui.SetWins(player.Wins);
+        ui.CreateComponent(player);
     }
 }

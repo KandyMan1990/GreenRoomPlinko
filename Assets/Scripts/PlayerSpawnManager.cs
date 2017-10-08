@@ -13,4 +13,13 @@ public class PlayerSpawnManager : MonoBehaviour
     {
         Instance = this;
     }
+
+    public void SpawnPlayers(List<PlayerData> players, GameObject obj)
+    {
+        for (int i = 0; i < players.Count; i++)
+        {
+            GameObject go = Instantiate(obj, SpawnPoints[i].position, Quaternion.identity);
+            //set text on go to be the first three letters of the name
+        }
+    }
 }

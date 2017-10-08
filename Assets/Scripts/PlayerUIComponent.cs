@@ -9,26 +9,42 @@ public class PlayerUIComponent : MonoBehaviour
     Text Played;
     [SerializeField]
     Text Wins;
+    [SerializeField]
+    PlayerData playerData;
 
-    bool InGame;
+    bool inGame;
 
     public void SetInGame(bool value)
     {
-        InGame = value;
+        inGame = value;
+        UpdateInGameStatus();
     }
 
-    public void SetName(string value)
+    void UpdateInGameStatus()
     {
-        PlayerName.text = value;
+        //adjust highlight on playerUI to show they are in game or not
+        if (inGame)
+            GameManager.Instance.AddPlayer(playerData);
+        else
+            GameManager.Instance.RemovePlayer(playerData);
     }
 
-    public void SetPlayed(int value)
+    public void IncrementPlayed()
     {
-        Played.text = value.ToString();
+        playerData.Played++;
     }
 
-    public void SetWins(int value)
+    public void IncrementWins()
     {
-        Wins.text = value.ToString();
+        playerData.Wins++;
+    }
+
+    public void CreateComponent(PlayerData player)
+    {
+        playerData = player;
+
+        PlayerName.text = playerData.Name;
+        Played.text = playerData.Played.ToString();
+        Wins.text = playerData.Wins.ToString();
     }
 }
