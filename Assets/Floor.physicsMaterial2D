@@ -5,6 +5,6 @@ PhysicsMaterial2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Obsticles
-  friction: 0.2
-  bounciness: 0.6
+  m_Name: Floor
+  friction: 0.5
+  bounciness: 0.75
