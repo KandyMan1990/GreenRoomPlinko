@@ -1,2 +1,2 @@
 # GreenRoomPlinko
-Modern day plinko for green room.  Newer.  Faster.  More Features.  Less rigged "winners" etc.
+Plinko V2. More newer. More better. More plinko-y. More Jake loses-y.
