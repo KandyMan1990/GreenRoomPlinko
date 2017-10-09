@@ -16,9 +16,22 @@ public class PlayerSpawnManager : MonoBehaviour
 
     public void SpawnPlayers(List<PlayerData> players, GameObject obj)
     {
+        Transform[] shuffledPoints = new Transform[SpawnPoints.Count];
+        SpawnPoints.CopyTo(shuffledPoints);
+
+        int n = shuffledPoints.Length;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, (n + 1));
+            Transform value = shuffledPoints[k];
+            shuffledPoints[k] = shuffledPoints[n];
+            shuffledPoints[n] = value;
+        }
+
         for (int i = 0; i < players.Count; i++)
         {
-            GameObject go = Instantiate(obj, SpawnPoints[i].position, Quaternion.identity);
+            GameObject go = Instantiate(obj, shuffledPoints[i].position, Quaternion.identity);
             //set text on go to be the first three letters of the name
         }
     }
