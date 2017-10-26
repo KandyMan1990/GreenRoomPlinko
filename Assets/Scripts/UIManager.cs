@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[assembly: System.Reflection.AssemblyVersion("1.0.*")]
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
@@ -10,6 +11,8 @@ public class UIManager : MonoBehaviour
     Transform Panel;
     [SerializeField]
     Button NewPlayerButton;
+    [SerializeField]
+    Text VersionText;
     List<PlayerData> Players = new List<PlayerData>();
 
     void Awake()
@@ -19,6 +22,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        VersionText.text = "Build Number: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
         foreach (PlayerData player in Players)
         {
             InstantiateNewPlayer(player);
