@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     Button startGameButton;
     [SerializeField]
     GameObject playersPanel;
+    [SerializeField]
+    UIManager uiManager;
+    [SerializeField]
+    GameObject Ceiling;
 
     public static GameManager Instance { get; private set; }
     List<PlayerData> players = new List<PlayerData>();
@@ -33,6 +37,18 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        if (players.Count == 0)
+        {
+            Debug.LogError("no players entered into game");
+            return;
+        }
+
+        if (players.Count == 1)
+        {
+            Debug.LogError("more than 1 player should be entered into game");
+            return;
+        }
+
         currentRound = 0;
         PlayerSpawnManager.Instance.SpawnPlayers(players, playerPrefab);
         startGameButton.interactable = false;
@@ -58,8 +74,9 @@ public class GameManager : MonoBehaviour
 
     void NextRound()
     {
+        EnableCeiling(true);
         currentRound++;
-        //count down from 3
+        StartCoroutine(Countdown());
         //on 0, disable top bar
         //when all players are in a box and not moving
         //  if all players in green or red, next round
@@ -67,6 +84,24 @@ public class GameManager : MonoBehaviour
         //      else remove players in green, next round
         //  if only 1 player in red, end game
         //  when preparing for next round, reenable top bar, move players back to top
+    }
+
+    IEnumerator Countdown()
+    {
+        float timer = 3f;
+
+        uiManager.SetCountdownText(Mathf.CeilToInt(timer), currentRound);
+        yield return null;
+
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            uiManager.SetCountdownText(Mathf.CeilToInt(timer));
+            yield return null;
+        }
+
+        uiManager.SetCountdownText(Mathf.CeilToInt(0));
+        EnableCeiling(false);
     }
 
     void EndGame()
@@ -86,5 +121,10 @@ public class GameManager : MonoBehaviour
         }
 
         //show winner plus all players who were in
+    }
+
+    void EnableCeiling(bool enabled)
+    {
+        Ceiling.SetActive(enabled);
     }
 }
