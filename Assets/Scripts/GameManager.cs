@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     UIManager uiManager;
     [SerializeField]
     GameObject Ceiling;
+    WaitForSeconds wait = new WaitForSeconds(2f);
 
     public static GameManager Instance { get; private set; }
     List<PlayerData> players = new List<PlayerData>();
@@ -74,7 +75,6 @@ public class GameManager : MonoBehaviour
 
     void NextRound()
     {
-        EnableCeiling(true);
         currentRound++;
         StartCoroutine(Countdown());
         //on 0, disable top bar
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         }
 
         uiManager.SetCountdownText(Mathf.CeilToInt(0));
-        EnableCeiling(false);
+        StartCoroutine(FadeCeiling());
     }
 
     void EndGame()
@@ -123,8 +123,30 @@ public class GameManager : MonoBehaviour
         //show winner plus all players who were in
     }
 
-    void EnableCeiling(bool enabled)
+    IEnumerator FadeCeiling()
     {
-        Ceiling.SetActive(enabled);
+        SpriteRenderer sr = Ceiling.GetComponent<SpriteRenderer>();
+        BoxCollider2D bc = Ceiling.GetComponent<BoxCollider2D>();
+        Color c = sr.color;
+
+        bc.enabled = false;
+
+        while(c.a > 0.5f)
+        {
+            c.a -= Time.deltaTime * 2;
+            sr.color = c;
+            yield return null;
+        }
+
+        yield return wait;
+
+        while (c.a < 1f)
+        {
+            c.a += Time.deltaTime * 2;
+            sr.color = c;
+            yield return null;
+        }
+
+        bc.enabled = true;
     }
 }
