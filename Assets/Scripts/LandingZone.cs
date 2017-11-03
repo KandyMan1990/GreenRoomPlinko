@@ -19,12 +19,10 @@ public class LandingZone : MonoBehaviour
     static bool instantWin;
 
     SpriteRenderer Renderer;
-    BoxCollider2D Collider;
 
     void Awake()
     {
         Renderer = GetComponent<SpriteRenderer>();
-        Collider = GetComponent<BoxCollider2D>();
 
         Renderer.color = defaultColour;
     }
