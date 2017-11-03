@@ -39,6 +39,11 @@ public class LandingZone : MonoBehaviour
         get { return winZone; }
     }
 
+    public bool InstantWinZone
+    {
+        get { return Renderer.color == InstantWinColour; }
+    }
+
     public void ResetLandingZone()
     {
         toggleWinZone();

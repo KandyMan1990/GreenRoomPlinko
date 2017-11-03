@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
     List<PlayerData> players = new List<PlayerData>();
+    List<FinishedPlayer> finishedPlayers = new List<FinishedPlayer>();
     int currentRound;
 
     void Awake()
@@ -72,6 +73,20 @@ public class GameManager : MonoBehaviour
         NextRound();
     }
 
+    void PrepareNextRound()
+    {
+        foreach (FinishedPlayer fp in finishedPlayers)
+        {
+            Vector3 pos = fp.GetTransform.position;
+            pos.y = 5;
+            fp.GetTransform.position = pos;
+            fp.GetPlayerGameobject.ResetObj();
+        }
+
+        finishedPlayers.Clear();
+
+        NextRound();
+    }
     void NextRound()
     {
         currentRound++;
@@ -81,12 +96,6 @@ public class GameManager : MonoBehaviour
             l.ResetLandingZone();
         }
         StartCoroutine(Countdown());
-        //when all players are in a box and not moving
-        //  if all players in green or red, next round
-        //  if any players in yellow, remove green and red players, next round
-        //      else remove players in green, next round
-        //  if only 1 player in red, end game
-        //  when preparing for next round, reenable top bar, move players back to top
     }
 
     IEnumerator Countdown()
@@ -151,5 +160,25 @@ public class GameManager : MonoBehaviour
         }
 
         bc.enabled = true;
+    }
+
+    public void PlayerFinished(FinishedPlayer fp)
+    {
+        finishedPlayers.Add(fp);
+        if (finishedPlayers.Count == players.Count)
+        {
+            CheckWinners();
+        }
+    }
+
+    void CheckWinners()
+    {
+        PrepareNextRound();
+        //if all players are in instant win, do over
+        //if some players are in instant win, remove other players, check if only 1 player left
+        //if all players are winner or all players are not winner, do over
+        //  remove players who arent winner, check if only 1 player is left
+        //  if only 1 player left, winner!
+        //      else prepare next round
     }
 }

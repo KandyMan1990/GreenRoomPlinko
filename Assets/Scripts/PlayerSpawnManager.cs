@@ -32,9 +32,10 @@ public class PlayerSpawnManager : MonoBehaviour
         for (int i = 0; i < players.Count; i++)
         {
             GameObject go = Instantiate(obj, shuffledPoints[i].position, Quaternion.identity);
+
             PlayerGameobject pgo = go.GetComponent<PlayerGameobject>();
             pgo.SetName(players[i].Name.Substring(0, 3));
-            //set text on go to be the first three letters of the name
+            pgo.SetPlayerData(players[i]);
         }
     }
 }
