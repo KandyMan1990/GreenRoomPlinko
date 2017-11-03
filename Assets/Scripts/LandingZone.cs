@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class LandingZone : MonoBehaviour
 {
+    [SerializeField]
+    Color defaultColour;
     [SerializeField]
     Color WinColour;
     [SerializeField]
@@ -22,6 +25,8 @@ public class LandingZone : MonoBehaviour
     {
         Renderer = GetComponent<SpriteRenderer>();
         Collider = GetComponent<BoxCollider2D>();
+
+        Renderer.color = defaultColour;
     }
 
     void toggleWinZone()
@@ -51,10 +56,34 @@ public class LandingZone : MonoBehaviour
         if (winZone && !instantWin && Random.Range(0, 100) <= 1)
         {
             instantWin = true;
-            Renderer.color = InstantWinColour;
+            StartCoroutine(FadeColour(InstantWinColour));
             return;
         }
 
-        Renderer.color = winZone ? WinColour : LoseColour;
+        Color temp = winZone ? WinColour : LoseColour;
+        StartCoroutine(FadeColour(temp));
+    }
+
+    IEnumerator FadeColour(Color c)
+    {
+        float lerpTime = 0f;
+
+        while (lerpTime < 1f)
+        {
+            Color tempColour = Color.Lerp(Renderer.color, defaultColour, lerpTime);
+            Renderer.color = tempColour;
+            lerpTime += Time.deltaTime / 2;
+            yield return null;
+        }
+
+        lerpTime = 0f;
+
+        while (lerpTime < 1f)
+        {
+            Color tempColour = Color.Lerp(Renderer.color, c, lerpTime);
+            Renderer.color = tempColour;
+            lerpTime += Time.deltaTime / 2;
+            yield return null;
+        }
     }
 }
