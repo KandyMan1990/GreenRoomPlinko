@@ -12,6 +12,26 @@ public class PlayerGameobject : MonoBehaviour
     {
         uiText = GetComponentInChildren<Text>();
         rb = GetComponent<Rigidbody2D>();
+
+        Color color = new Color(Random.Range(0f, 0.85f), Random.Range(0f, 0.85f), Random.Range(0f, 0.85f));
+
+        GetComponent<SpriteRenderer>().color = color;
+
+        GradientColorKey gradientColorKey = new GradientColorKey(color, 0f);
+        GradientColorKey[] colourKeys = new GradientColorKey[2];
+        colourKeys[0] = gradientColorKey;
+        colourKeys[1] = gradientColorKey;
+
+        GradientAlphaKey alphaKey0 = new GradientAlphaKey(1f, 0f);
+        GradientAlphaKey alphaKey1 = new GradientAlphaKey(0f, 1f);
+        GradientAlphaKey[] alphaKeys = new GradientAlphaKey[2];
+        alphaKeys[0] = alphaKey0;
+        alphaKeys[1] = alphaKey1;
+
+        Gradient gradient = new Gradient();
+        gradient.SetKeys(colourKeys, alphaKeys);
+
+        GetComponent<TrailRenderer>().colorGradient = gradient;
     }
 
     public void SetName(string n)
