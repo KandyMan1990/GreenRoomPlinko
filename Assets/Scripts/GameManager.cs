@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     GameObject landingZonesGameObject;
     WaitForSeconds wait = new WaitForSeconds(2f);
     LandingZone[] landingZones;
+    Toggle[] toggles;
 
     public static GameManager Instance { get; private set; }
     List<PlayerData> players = new List<PlayerData>();
@@ -27,7 +28,12 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+    }
+
+    void Start()
+    {
         landingZones = landingZonesGameObject.GetComponentsInChildren<LandingZone>();
+        toggles = playersPanel.GetComponentsInChildren<Toggle>();
     }
 
     public void AddPlayer(PlayerData player)
@@ -57,7 +63,6 @@ public class GameManager : MonoBehaviour
         currentRound = 0;
         PlayerSpawnManager.Instance.SpawnPlayers(players, playerPrefab);
         startGameButton.interactable = false;
-        Toggle[] toggles = playersPanel.GetComponentsInChildren<Toggle>();
 
         foreach (Toggle t in toggles)
         {
@@ -65,16 +70,6 @@ public class GameManager : MonoBehaviour
         }
 
         NextRound();
-    }
-
-    void StartGame()
-    {
-        //not necessarily to go here, but
-        //when a ball is in landing zone and velocity is 0, call event
-        //event checks if all balls in zone and at 0, if so, check next round
-        //if not, continue as normal
-        //if velocity 0 but not all balls in zone, temp disable colliders of those not in zone for 1/4 a second to free stuck balls
-        //could potentially check this periodically
     }
 
     void NextRound()
@@ -86,7 +81,6 @@ public class GameManager : MonoBehaviour
             l.ResetLandingZone();
         }
         StartCoroutine(Countdown());
-        //on 0, disable top bar
         //when all players are in a box and not moving
         //  if all players in green or red, next round
         //  if any players in yellow, remove green and red players, next round
