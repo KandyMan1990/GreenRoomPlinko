@@ -22,6 +22,26 @@ public class LandingZone : MonoBehaviour
     {
         Renderer = GetComponent<SpriteRenderer>();
         Collider = GetComponent<BoxCollider2D>();
+    }
+
+    void toggleWinZone()
+    {
+        winZone = !winZone;
+    }
+
+    public static void ResetInstantWin()
+    {
+        instantWin = false;
+    }
+
+    public bool WinZone
+    {
+        get { return winZone; }
+    }
+
+    public void ResetLandingZone()
+    {
+        toggleWinZone();
 
         if (winZone && !instantWin && Random.Range(0, 100) <= 1)
         {

@@ -15,7 +15,10 @@ public class GameManager : MonoBehaviour
     UIManager uiManager;
     [SerializeField]
     GameObject Ceiling;
+    [SerializeField]
+    GameObject landingZonesGameObject;
     WaitForSeconds wait = new WaitForSeconds(2f);
+    LandingZone[] landingZones;
 
     public static GameManager Instance { get; private set; }
     List<PlayerData> players = new List<PlayerData>();
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        landingZones = landingZonesGameObject.GetComponentsInChildren<LandingZone>();
     }
 
     public void AddPlayer(PlayerData player)
@@ -76,6 +80,11 @@ public class GameManager : MonoBehaviour
     void NextRound()
     {
         currentRound++;
+        LandingZone.ResetInstantWin();
+        foreach (LandingZone l in landingZones)
+        {
+            l.ResetLandingZone();
+        }
         StartCoroutine(Countdown());
         //on 0, disable top bar
         //when all players are in a box and not moving
