@@ -77,16 +77,55 @@ public class GameManager : MonoBehaviour
     {
         foreach (FinishedPlayer fp in finishedPlayers)
         {
-            Vector3 pos = fp.GetTransform.position;
-            pos.y = 5;
-            fp.GetTransform.position = pos;
-            fp.GetPlayerGameobject.ResetObj();
+            StartCoroutine(PrepareGameObject(fp));
+        }
+    }
+
+    IEnumerator PrepareGameObject(FinishedPlayer fp)
+    {
+        GameObject go = fp.GetPlayerGameobject.gameObject;
+        Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
+        TrailRenderer tr = go.GetComponent<TrailRenderer>();
+        SpriteRenderer sr = go.GetComponent<SpriteRenderer>();
+        Text text = go.GetComponentInChildren<Text>();
+        Color srColour = sr.color;
+        Color textColour = text.color;
+        float alpha = 1f;
+
+        tr.enabled = false;
+        rb.simulated = false;
+
+        while (alpha > 0)
+        {
+            alpha -= Time.deltaTime;
+            text.color = new Color(textColour.r, textColour.g, textColour.b, alpha);
+            sr.color = new Color(srColour.r, srColour.g, srColour.b, alpha);
+            yield return null;
         }
 
-        finishedPlayers.Clear();
+        Vector3 pos = fp.GetTransform.position;
+        pos.y = 5;
+        fp.GetTransform.position = pos;
 
-        NextRound();
+        fp.GetPlayerGameobject.ResetObj();
+
+        while (alpha < 1)
+        {
+            alpha += Time.deltaTime;
+            text.color = new Color(textColour.r, textColour.g, textColour.b, alpha);
+            sr.color = new Color(srColour.r, srColour.g, srColour.b, alpha);
+            yield return null;
+        }
+
+        tr.enabled = true;
+        rb.simulated = true;
+
+        finishedPlayers.Remove(fp);
+
+        if (finishedPlayers.Count == 0)
+            NextRound();
     }
+
     void NextRound()
     {
         currentRound++;
