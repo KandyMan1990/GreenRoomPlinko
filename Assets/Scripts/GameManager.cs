@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     WaitForSeconds wait = new WaitForSeconds(2f);
     LandingZone[] landingZones;
     Toggle[] toggles;
+    PlayerUIComponent[] playersUIs;
 
     public static GameManager Instance { get; private set; }
     List<PlayerData> players = new List<PlayerData>();
@@ -263,6 +264,16 @@ public class GameManager : MonoBehaviour
                 {
                     if (!playersToRemove.Contains(p))
                     {
+                        playersUIs = playersPanel.GetComponentsInChildren<PlayerUIComponent>();
+
+                        foreach (PlayerUIComponent ui in playersUIs)
+                        {
+                            if (ui.GetPlayerData == p.GetPlayerGameobject.GetPlayerData)
+                            {
+                                ui.IncrementWins();
+                                break;
+                            }
+                        }
                         Debug.Log("winner is " + p.GetPlayerGameobject.GetPlayerData.Name + "!");
                         EndGame();
                         return;

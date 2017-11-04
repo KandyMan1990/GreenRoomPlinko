@@ -32,11 +32,13 @@ public class PlayerUIComponent : MonoBehaviour
     public void IncrementPlayed()
     {
         playerData.Played++;
+        Played.text = playerData.Played.ToString();
     }
 
     public void IncrementWins()
     {
         playerData.Wins++;
+        Wins.text = playerData.Wins.ToString();
     }
 
     public void CreateComponent(PlayerData player)
