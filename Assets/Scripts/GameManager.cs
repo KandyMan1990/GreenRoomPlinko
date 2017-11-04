@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     List<PlayerData> players = new List<PlayerData>();
     List<FinishedPlayer> finishedPlayers = new List<FinishedPlayer>();
+    List<FinishedPlayer> playersToRemove = new List<FinishedPlayer>();
     int currentRound;
 
     void Awake()
@@ -207,17 +209,79 @@ public class GameManager : MonoBehaviour
         if (finishedPlayers.Count == players.Count)
         {
             CheckWinners();
+            if (finishedPlayers.Count == 1)
+            {
+                Debug.Log("winner is " + finishedPlayers[0].GetPlayerGameobject.GetPlayerData.Name + "!");
+                return;
+            }
+
+            PrepareNextRound();
         }
     }
 
     void CheckWinners()
     {
-        PrepareNextRound();
-        //if all players are in instant win, do over
-        //if some players are in instant win, remove other players, check if only 1 player left
-        //if all players are winner or all players are not winner, do over
-        //  remove players who arent winner, check if only 1 player is left
-        //  if only 1 player left, winner!
-        //      else prepare next round
+        if (ReplayRound())
+        {
+            return;
+        }
+
+        if (finishedPlayers.Any(element => element.GetInstantWinner))
+        {
+            foreach (FinishedPlayer fp in finishedPlayers)
+            {
+                if (!fp.GetInstantWinner)
+                {
+                    playersToRemove.Add(fp);
+                }
+            }
+
+            foreach (FinishedPlayer fp in playersToRemove)
+            {
+                Destroy(fp.GetTransform.gameObject);
+                finishedPlayers.Remove(fp);
+            }
+            playersToRemove.Clear();
+            return;
+        }
+
+        if (finishedPlayers.Any(element => element.GetWinner))
+        {
+            foreach (FinishedPlayer fp in finishedPlayers)
+            {
+                if (!fp.GetWinner)
+                {
+                    playersToRemove.Add(fp);
+                }
+            }
+
+            foreach (FinishedPlayer fp in playersToRemove)
+            {
+                Destroy(fp.GetTransform.gameObject);
+                finishedPlayers.Remove(fp);
+            }
+            playersToRemove.Clear();
+            return;
+        }
+    }
+
+    bool ReplayRound()
+    {
+        if (finishedPlayers.All(element => element.GetInstantWinner))
+        {
+            return true;
+        }
+
+        if (finishedPlayers.All(element => element.GetWinner))
+        {
+            return true;
+        }
+
+        if (finishedPlayers.All(element => !element.GetWinner))
+        {
+            return true;
+        }
+
+        return false;
     }
 }
