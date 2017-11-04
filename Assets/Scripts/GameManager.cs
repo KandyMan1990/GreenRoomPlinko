@@ -105,8 +105,15 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
+        //    foreach (FinishedPlayer fp in playersToRemove)
+        //    {
+        //        Destroy(fp.GetTransform.gameObject);
+        //        finishedPlayers.Remove(fp);
+        //    }
+        //    playersToRemove.Clear();
+
         Vector3 pos = fp.GetTransform.position;
-        pos.y = 5;
+        pos.y += 9;
         fp.GetTransform.position = pos;
 
         fp.GetPlayerGameobject.ResetObj();
@@ -235,34 +242,26 @@ public class GameManager : MonoBehaviour
                     playersToRemove.Add(fp);
                 }
             }
-
-            foreach (FinishedPlayer fp in playersToRemove)
-            {
-                Destroy(fp.GetTransform.gameObject);
-                finishedPlayers.Remove(fp);
-            }
-            playersToRemove.Clear();
             return;
         }
 
-        if (finishedPlayers.Any(element => element.GetWinner))
-        {
-            foreach (FinishedPlayer fp in finishedPlayers)
-            {
-                if (!fp.GetWinner)
-                {
-                    playersToRemove.Add(fp);
-                }
-            }
+        //if (finishedPlayers.Any(element => element.GetWinner))
+        //{
+        //    foreach (FinishedPlayer fp in finishedPlayers)
+        //    {
+        //        if (!fp.GetWinner)
+        //        {
+        //            playersToRemove.Add(fp);
+        //        }
+        //    }
 
-            foreach (FinishedPlayer fp in playersToRemove)
-            {
-                Destroy(fp.GetTransform.gameObject);
-                finishedPlayers.Remove(fp);
-            }
-            playersToRemove.Clear();
-            return;
-        }
+        //    foreach (FinishedPlayer fp in playersToRemove)
+        //    {
+        //        Destroy(fp.GetTransform.gameObject);
+        //        finishedPlayers.Remove(fp);
+        //    }
+        //    playersToRemove.Clear();
+        //}
     }
 
     bool ReplayRound()

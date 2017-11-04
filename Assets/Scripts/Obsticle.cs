@@ -3,11 +3,15 @@ using UnityEngine;
 
 public class Obsticle : MonoBehaviour
 {
-    CircleCollider2D circleCollider;
+    [SerializeField]
+    float timeUntilCheck = 1f;
+    Collider2D thisCollider;
+    WaitForSeconds wait;
 
     void Awake()
     {
-        circleCollider = GetComponent<CircleCollider2D>();
+        thisCollider = GetComponent<Collider2D>();
+        wait = new WaitForSeconds(timeUntilCheck);
     }
 
     void OnCollisionStay2D(Collision2D col)
@@ -26,9 +30,9 @@ public class Obsticle : MonoBehaviour
 
         if (go.transform.position == currentPos)
         {
-            circleCollider.enabled = false;
-            yield return new WaitForSeconds(1f);
-            circleCollider.enabled = true;
+            thisCollider.enabled = false;
+            yield return wait;
+            thisCollider.enabled = true;
         }
     }
 }
