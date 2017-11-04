@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     List<PlayerData> players = new List<PlayerData>();
     List<FinishedPlayer> finishedPlayers = new List<FinishedPlayer>();
     List<FinishedPlayer> playersToRemove = new List<FinishedPlayer>();
+    List<PlayerData> losers = new List<PlayerData>();
     int currentRound;
 
     void Awake()
@@ -105,29 +106,31 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        //    foreach (FinishedPlayer fp in playersToRemove)
-        //    {
-        //        Destroy(fp.GetTransform.gameObject);
-        //        finishedPlayers.Remove(fp);
-        //    }
-        //    playersToRemove.Clear();
-
-        Vector3 pos = fp.GetTransform.position;
-        pos.y += 9;
-        fp.GetTransform.position = pos;
-
-        fp.GetPlayerGameobject.ResetObj();
-
-        while (alpha < 1)
+        if (playersToRemove.Contains(fp))
         {
-            alpha += Time.deltaTime;
-            text.color = new Color(textColour.r, textColour.g, textColour.b, alpha);
-            sr.color = new Color(srColour.r, srColour.g, srColour.b, alpha);
-            yield return null;
+            Destroy(fp.GetTransform.gameObject);
+            losers.Add(fp.GetPlayerGameobject.GetPlayerData);
         }
 
-        tr.enabled = true;
-        rb.simulated = true;
+        else
+        {
+            Vector3 pos = fp.GetTransform.position;
+            pos.y += 9;
+            fp.GetTransform.position = pos;
+
+            fp.GetPlayerGameobject.ResetObj();
+
+            while (alpha < 1)
+            {
+                alpha += Time.deltaTime;
+                text.color = new Color(textColour.r, textColour.g, textColour.b, alpha);
+                sr.color = new Color(srColour.r, srColour.g, srColour.b, alpha);
+                yield return null;
+            }
+
+            tr.enabled = true;
+            rb.simulated = true;
+        }
 
         finishedPlayers.Remove(fp);
 
@@ -137,6 +140,7 @@ public class GameManager : MonoBehaviour
 
     void NextRound()
     {
+        playersToRemove.Clear();
         currentRound++;
         LandingZone.ResetInstantWin();
         foreach (LandingZone l in landingZones)
@@ -213,13 +217,19 @@ public class GameManager : MonoBehaviour
     public void PlayerFinished(FinishedPlayer fp)
     {
         finishedPlayers.Add(fp);
-        if (finishedPlayers.Count == players.Count)
+        if (finishedPlayers.Count + losers.Count == players.Count)
         {
             CheckWinners();
-            if (finishedPlayers.Count == 1)
+            if (finishedPlayers.Count - playersToRemove.Count == 1)
             {
-                Debug.Log("winner is " + finishedPlayers[0].GetPlayerGameobject.GetPlayerData.Name + "!");
-                return;
+                foreach (FinishedPlayer p in finishedPlayers)
+                {
+                    if (!playersToRemove.Contains(p))
+                    {
+                        Debug.Log("winner is " + p.GetPlayerGameobject.GetPlayerData.Name + "!");
+                        return;
+                    }
+                }
             }
 
             PrepareNextRound();
@@ -245,23 +255,16 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        //if (finishedPlayers.Any(element => element.GetWinner))
-        //{
-        //    foreach (FinishedPlayer fp in finishedPlayers)
-        //    {
-        //        if (!fp.GetWinner)
-        //        {
-        //            playersToRemove.Add(fp);
-        //        }
-        //    }
-
-        //    foreach (FinishedPlayer fp in playersToRemove)
-        //    {
-        //        Destroy(fp.GetTransform.gameObject);
-        //        finishedPlayers.Remove(fp);
-        //    }
-        //    playersToRemove.Clear();
-        //}
+        if (finishedPlayers.Any(element => element.GetWinner))
+        {
+            foreach (FinishedPlayer fp in finishedPlayers)
+            {
+                if (!fp.GetWinner)
+                {
+                    playersToRemove.Add(fp);
+                }
+            }
+        }
     }
 
     bool ReplayRound()

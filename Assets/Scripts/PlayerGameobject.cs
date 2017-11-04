@@ -7,6 +7,7 @@ public class PlayerGameobject : MonoBehaviour
     Rigidbody2D rb;
     bool toldGameManager;
     PlayerData pd;
+    float timeInTrigger = 0f;
 
     void Awake()
     {
@@ -51,6 +52,13 @@ public class PlayerGameobject : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
+        timeInTrigger += Time.deltaTime;
+
+        if (timeInTrigger > 3f && rb.velocity != Vector2.zero)
+        {
+            rb.velocity = Vector2.zero;
+        }
+
         if (rb.velocity == Vector2.zero && !toldGameManager)
         {
             toldGameManager = true;
@@ -64,5 +72,6 @@ public class PlayerGameobject : MonoBehaviour
     public void ResetObj()
     {
         toldGameManager = false;
+        timeInTrigger = 0f;
     }
 }
