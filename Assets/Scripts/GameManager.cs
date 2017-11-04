@@ -173,8 +173,13 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FadeCeiling());
     }
 
-    void EndGame()
+    void EndGame(string winner, string[] losers)
     {
+        Debug.Log("Winner is " + winner);
+        for (int i = 0; i < losers.Length; i++)
+        {
+            Debug.Log(string.Format("Loser {0}: {1}", i + 1, losers[i]));
+        }
         startGameButton.interactable = true;
 
         foreach (Toggle t in toggles)
@@ -197,8 +202,6 @@ public class GameManager : MonoBehaviour
         {
             l.RevertToOriginalState();
         }
-
-        //show winner plus all players who were in
     }
 
     IEnumerator FinalFade(GameObject go)
@@ -274,8 +277,14 @@ public class GameManager : MonoBehaviour
                                 break;
                             }
                         }
-                        Debug.Log("winner is " + p.GetPlayerGameobject.GetPlayerData.Name + "!");
-                        EndGame();
+
+                        string[] loserNames = new string[losers.Count];
+                        for (int i = 0; i < losers.Count; i++)
+                        {
+                            loserNames[i] = losers[i].Name;
+                        }
+
+                        EndGame(p.GetPlayerGameobject.GetPlayerData.Name, loserNames);
                         return;
                     }
                 }
