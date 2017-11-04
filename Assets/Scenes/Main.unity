@@ -1863,6 +1863,7 @@ MonoBehaviour:
   - {fileID: 69264920}
   - {fileID: 1858569375}
   - {fileID: 1118320094}
+  playersPanel: {fileID: 1711608291}
 --- !u!4 &157051429
 Transform:
   m_ObjectHideFlags: 0
@@ -12359,7 +12360,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 65
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0

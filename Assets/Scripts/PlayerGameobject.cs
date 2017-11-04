@@ -44,6 +44,11 @@ public class PlayerGameobject : MonoBehaviour
         pd = playerData;
     }
 
+    public PlayerData GetPlayerData
+    {
+        get { return pd; }
+    }
+
     void OnTriggerStay2D(Collider2D collision)
     {
         if (rb.velocity == Vector2.zero && !toldGameManager)

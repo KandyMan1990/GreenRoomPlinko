@@ -11,6 +11,7 @@ public class PlayerUIComponent : MonoBehaviour
     Text Wins;
     [SerializeField]
     PlayerData playerData;
+    public Image background;
 
     bool inGame;
 
@@ -46,5 +47,10 @@ public class PlayerUIComponent : MonoBehaviour
         PlayerName.text = playerData.Name;
         Played.text = playerData.Played.ToString();
         Wins.text = playerData.Wins.ToString();
+    }
+
+    public PlayerData GetPlayerData
+    {
+        get { return playerData; }
     }
 }

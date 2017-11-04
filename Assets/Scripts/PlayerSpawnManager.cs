@@ -8,6 +8,9 @@ public class PlayerSpawnManager : MonoBehaviour
 
     [SerializeField]
     List<Transform> SpawnPoints;
+    [SerializeField]
+    GameObject playersPanel;
+    PlayerUIComponent[] playersUIs;
 
     void Awake()
     {
@@ -16,6 +19,8 @@ public class PlayerSpawnManager : MonoBehaviour
 
     public void SpawnPlayers(List<PlayerData> players, GameObject obj)
     {
+        playersUIs = playersPanel.GetComponentsInChildren<PlayerUIComponent>();
+
         Transform[] shuffledPoints = new Transform[SpawnPoints.Count];
         SpawnPoints.CopyTo(shuffledPoints);
 
@@ -36,6 +41,16 @@ public class PlayerSpawnManager : MonoBehaviour
             PlayerGameobject pgo = go.GetComponent<PlayerGameobject>();
             pgo.SetName(players[i].Name.Substring(0, 3));
             pgo.SetPlayerData(players[i]);
+
+            for (int j = 0; j < playersUIs.Length; j++)
+            {
+                if (pgo.GetPlayerData == playersUIs[j].GetPlayerData)
+                {
+                    Color c = go.GetComponent<SpriteRenderer>().color;
+                    c.a = 0.3f;
+                    playersUIs[j].background.color = c;
+                }
+            }
         }
     }
 }
