@@ -29,10 +29,7 @@ public class UIManager : MonoBehaviour
         CountdownText.gameObject.SetActive(false);
         RoundNumberText.gameObject.SetActive(false);
         Players = Data.Load();
-    }
 
-    void Start()
-    {
         VersionText.text = string.Format("V{0}.{1}.{2}", MajorVersion, MinorVersion, Revision);
 
         foreach (PlayerData player in Players)
@@ -48,12 +45,16 @@ public class UIManager : MonoBehaviour
 
     public void AddNewPlayerButtonOnClick(string name)
     {
-        //if Players.Count < 15, add name to list of players
-        //instantiate the new player into the panel
-        //testing stuff below
-        PlayerData pd = new PlayerData(name);
-        Players.Add(pd);
-        InstantiateNewPlayer(pd);
+        if (Players.Count < 15)
+        {
+            PlayerData pd = new PlayerData(name);
+            Players.Add(pd);
+            InstantiateNewPlayer(pd);
+        }
+        else
+        {
+            //max players reached
+        }
     }
 
     void InstantiateNewPlayer(PlayerData player)

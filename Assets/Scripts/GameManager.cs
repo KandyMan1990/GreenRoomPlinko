@@ -171,11 +171,11 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         startGameButton.interactable = true;
-        Toggle[] toggles = playersPanel.GetComponentsInChildren<Toggle>();
 
         foreach (Toggle t in toggles)
         {
             t.interactable = true;
+            t.isOn = false;
         }
 
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -227,6 +227,7 @@ public class GameManager : MonoBehaviour
                     if (!playersToRemove.Contains(p))
                     {
                         Debug.Log("winner is " + p.GetPlayerGameobject.GetPlayerData.Name + "!");
+                        EndGame();
                         return;
                     }
                 }
