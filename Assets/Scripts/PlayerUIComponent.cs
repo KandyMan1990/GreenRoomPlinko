@@ -23,7 +23,6 @@ public class PlayerUIComponent : MonoBehaviour
 
     void UpdateInGameStatus()
     {
-        //adjust highlight on playerUI to show they are in game or not
         if (inGame)
             GameManager.Instance.AddPlayer(playerData);
         else

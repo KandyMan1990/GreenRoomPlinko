@@ -47,7 +47,7 @@ public class PlayerSpawnManager : MonoBehaviour
                 if (pgo.GetPlayerData == playersUIs[j].GetPlayerData)
                 {
                     Color c = go.GetComponent<SpriteRenderer>().color;
-                    c.a = 0.3f;
+                    c.a = 0.5f;
                     playersUIs[j].background.color = c;
                 }
             }
