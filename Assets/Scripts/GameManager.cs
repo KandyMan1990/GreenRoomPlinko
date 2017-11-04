@@ -64,6 +64,10 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        finishedPlayers = new List<FinishedPlayer>();
+        playersToRemove = new List<FinishedPlayer>();
+        losers = new List<PlayerData>();
+
         currentRound = 0;
         PlayerSpawnManager.Instance.SpawnPlayers(players, playerPrefab);
         startGameButton.interactable = false;
@@ -178,13 +182,46 @@ public class GameManager : MonoBehaviour
             t.isOn = false;
         }
 
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject p in players)
+        players = new List<PlayerData>();
+
+        GameObject[] playerGameObjects = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject g in playerGameObjects)
         {
-            Destroy(p);
+            StartCoroutine(FinalFade(g));
+        }
+
+        LandingZone.ResetInstantWin();
+        foreach (LandingZone l in landingZones)
+        {
+            l.RevertToOriginalState();
         }
 
         //show winner plus all players who were in
+    }
+
+    IEnumerator FinalFade(GameObject go)
+    {
+        Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
+        TrailRenderer tr = go.GetComponent<TrailRenderer>();
+        SpriteRenderer sr = go.GetComponent<SpriteRenderer>();
+        Text text = go.GetComponentInChildren<Text>();
+        Color srColour = sr.color;
+        Color textColour = text.color;
+        float alpha = 1f;
+
+        tr.enabled = false;
+        rb.simulated = false;
+
+        while (alpha > 0)
+        {
+            alpha -= Time.deltaTime;
+            text.color = new Color(textColour.r, textColour.g, textColour.b, alpha);
+            sr.color = new Color(srColour.r, srColour.g, srColour.b, alpha);
+            yield return null;
+        }
+
+        Destroy(go);
     }
 
     IEnumerator FadeCeiling()

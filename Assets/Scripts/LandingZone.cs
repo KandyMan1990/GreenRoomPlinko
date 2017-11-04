@@ -62,6 +62,11 @@ public class LandingZone : MonoBehaviour
         StartCoroutine(FadeColour(temp));
     }
 
+    public void RevertToOriginalState()
+    {
+        StartCoroutine(FadeColour(defaultColour));
+    }
+
     IEnumerator FadeColour(Color c)
     {
         float lerpTime = 0f;
