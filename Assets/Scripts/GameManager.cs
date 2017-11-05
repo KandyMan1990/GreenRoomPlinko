@@ -55,13 +55,13 @@ public class GameManager : MonoBehaviour
     {
         if (players.Count == 0)
         {
-            Debug.LogError("no players entered into game");
+            ErrorManager.Instance.ShowError("No players entered into game");
             return;
         }
 
         if (players.Count == 1)
         {
-            Debug.LogError("more than 1 player should be entered into game");
+            ErrorManager.Instance.ShowError("More than 1 player should be entered into the game");
             return;
         }
 

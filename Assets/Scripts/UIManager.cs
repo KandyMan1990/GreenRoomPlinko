@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("maximum players reached");
+            ErrorManager.Instance.ShowError("Maximum players reached");
         }
     }
 

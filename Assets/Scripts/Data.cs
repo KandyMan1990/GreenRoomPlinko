@@ -20,7 +20,7 @@ public static class Data
         }
         catch(SerializationException e)
         {
-            Debug.LogError("Failed to save, reason: " + e.Message);
+            ErrorManager.Instance.ShowError("Failed to save, reason: " + e.Message);
             throw;
         }
         finally
@@ -35,7 +35,7 @@ public static class Data
 
         if(!File.Exists(path))
         {
-            Debug.Log("Save file does not exist, returning new empty list");
+            ErrorManager.Instance.ShowError("Save file does not exist, file will be created on next save");
             return new List<PlayerData>();
         }
 
@@ -49,7 +49,7 @@ public static class Data
         }
         catch(SerializationException e)
         {
-            Debug.LogError("Failed to load, returning new empty list.  Reason: " + e.Message);
+            ErrorManager.Instance.ShowError("Failed to load save data, reason: " + e.Message);
             data = new List<PlayerData>();
         }
         finally
