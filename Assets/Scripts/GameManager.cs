@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
     GameObject Ceiling;
     [SerializeField]
     GameObject landingZonesGameObject;
+    [SerializeField]
+    GameObject winnersPanel;
+    [SerializeField]
+    Text winnerText;
+
     WaitForSeconds wait = new WaitForSeconds(2f);
     LandingZone[] landingZones;
     Toggle[] toggles;
@@ -177,7 +182,9 @@ public class GameManager : MonoBehaviour
     {
         uiManager.Commit();
 
-        Debug.Log("Winner is " + winner);
+        winnerText.text = winner;
+        winnersPanel.SetActive(true);
+
         for (int i = 0; i < losersArray.Length; i++)
         {
             Debug.Log(string.Format("Loser {0}: {1}", i + 1, losersArray[i]));
