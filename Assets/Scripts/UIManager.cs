@@ -50,6 +50,8 @@ public class UIManager : MonoBehaviour
             PlayerData pd = new PlayerData(name);
             Players.Add(pd);
             InstantiateNewPlayer(pd);
+
+            Commit();
         }
         else
         {

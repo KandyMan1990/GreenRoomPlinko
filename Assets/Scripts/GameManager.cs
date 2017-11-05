@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     GameObject winnersPanel;
     [SerializeField]
     Text winnerText;
+    [SerializeField]
+    Text loserText;
 
     WaitForSeconds wait = new WaitForSeconds(2f);
     LandingZone[] landingZones;
@@ -185,10 +187,14 @@ public class GameManager : MonoBehaviour
         winnerText.text = winner;
         winnersPanel.SetActive(true);
 
+        string losersText = string.Empty;
+
         for (int i = 0; i < losersArray.Length; i++)
         {
-            Debug.Log(string.Format("Loser {0}: {1}", i + 1, losersArray[i]));
+            losersText = string.Concat(losersText, losersArray[i], ".  ");
         }
+
+        loserText.text = losersText;
 
         startGameButton.interactable = true;
 
