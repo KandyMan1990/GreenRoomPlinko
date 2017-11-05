@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void OnApplicationQuit()
+    public void Commit()
     {
         Data.Save(Players);
     }

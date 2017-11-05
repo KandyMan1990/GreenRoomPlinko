@@ -173,13 +173,16 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FadeCeiling());
     }
 
-    void EndGame(string winner, string[] losers)
+    void EndGame(string winner, string[] losersArray)
     {
+        uiManager.Commit();
+
         Debug.Log("Winner is " + winner);
-        for (int i = 0; i < losers.Length; i++)
+        for (int i = 0; i < losersArray.Length; i++)
         {
-            Debug.Log(string.Format("Loser {0}: {1}", i + 1, losers[i]));
+            Debug.Log(string.Format("Loser {0}: {1}", i + 1, losersArray[i]));
         }
+
         startGameButton.interactable = true;
 
         foreach (Toggle t in toggles)
@@ -271,20 +274,25 @@ public class GameManager : MonoBehaviour
 
                         foreach (PlayerUIComponent ui in playersUIs)
                         {
+                            ui.background.color = new Color(ui.background.color.r, ui.background.color.g, ui.background.color.b, 0f);
+
                             if (ui.GetPlayerData == p.GetPlayerGameobject.GetPlayerData)
                             {
                                 ui.IncrementWins();
-                                break;
                             }
                         }
 
-                        string[] loserNames = new string[losers.Count];
-                        for (int i = 0; i < losers.Count; i++)
+                        List<string> loserNames = new List<string>(); ;
+
+                        foreach (PlayerData pd in players)
                         {
-                            loserNames[i] = losers[i].Name;
+                            if (pd != p.GetPlayerGameobject.GetPlayerData)
+                            {
+                                loserNames.Add(pd.Name);
+                            }
                         }
 
-                        EndGame(p.GetPlayerGameobject.GetPlayerData.Name, loserNames);
+                        EndGame(p.GetPlayerGameobject.GetPlayerData.Name, loserNames.ToArray());
                         return;
                     }
                 }
