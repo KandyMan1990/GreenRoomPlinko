@@ -69,6 +69,17 @@ public class PlayerGameobject : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall") || 
+            collision.gameObject.CompareTag("Obsticle") || 
+            collision.gameObject.CompareTag("Player") || 
+            collision.gameObject.CompareTag("Floor"))
+        {
+            AudioManager.Instance.PlayCollision();
+        }
+    }
+
     public void ResetObj()
     {
         toldGameManager = false;

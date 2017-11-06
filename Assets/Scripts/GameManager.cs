@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
         losers = new List<PlayerData>();
 
         currentRound = 0;
+        AudioManager.Instance.PlayPlayerSpawn();
         PlayerSpawnManager.Instance.SpawnPlayers(players, playerPrefab);
         startGameButton.interactable = false;
 
@@ -101,6 +102,8 @@ public class GameManager : MonoBehaviour
 
     void PrepareNextRound()
     {
+        AudioManager.Instance.PlayPlayerTransition();
+
         foreach (FinishedPlayer fp in finishedPlayers)
         {
             StartCoroutine(PrepareGameObject(fp));

@@ -10,6 +10,7 @@ public class Obsticle : MonoBehaviour
 
     void Awake()
     {
+        tag = "Obsticle";
         thisCollider = GetComponent<Collider2D>();
         wait = new WaitForSeconds(timeUntilCheck);
     }
