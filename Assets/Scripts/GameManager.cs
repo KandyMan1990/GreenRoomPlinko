@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         landingZones = landingZonesGameObject.GetComponentsInChildren<LandingZone>();
-        toggles = playersPanel.GetComponentsInChildren<Toggle>();
     }
 
     public void AddPlayer(PlayerData player)
@@ -79,6 +78,8 @@ public class GameManager : MonoBehaviour
         currentRound = 0;
         PlayerSpawnManager.Instance.SpawnPlayers(players, playerPrefab);
         startGameButton.interactable = false;
+
+        toggles = playersPanel.GetComponentsInChildren<Toggle>();
 
         foreach (Toggle t in toggles)
         {
