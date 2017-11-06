@@ -196,6 +196,7 @@ public class GameManager : MonoBehaviour
 
     void EndGame(string winner, string[] losersArray)
     {
+        AudioManager.Instance.PlayWinner();
         uiManager.Commit();
 
         winnerText.text = winner;

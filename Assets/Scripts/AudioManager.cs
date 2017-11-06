@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     AudioClip spawnPlayers;
     [SerializeField]
+    AudioClip winner;
+    [SerializeField]
     AudioClip[] collisions;
     [SerializeField]
     [Range(0f, 1f)]
@@ -24,6 +26,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     [Range(0f, 1f)]
     float collisionVolume = 0.2f;
+    [SerializeField]
+    [Range(0f, 1f)]
+    float winnerVolume = 0.5f;
 
     void Awake()
     {
@@ -63,5 +68,10 @@ public class AudioManager : MonoBehaviour
 
         AudioClip clip = collisions[Random.Range(0, collisions.Length)];
         source.PlayOneShot(clip, collisionVolume);
+    }
+
+    public void PlayWinner()
+    {
+        StartCoroutine(PlayClip(winner, winnerVolume));
     }
 }
