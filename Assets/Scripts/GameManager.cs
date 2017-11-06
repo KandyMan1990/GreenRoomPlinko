@@ -57,6 +57,16 @@ public class GameManager : MonoBehaviour
         players.Remove(player);
     }
 
+    public void AddAllPlayers()
+    {
+        toggles = playersPanel.GetComponentsInChildren<Toggle>();
+
+        foreach (Toggle t in toggles)
+        {
+            t.isOn = true;
+        }
+    }
+
     public void ResetGame()
     {
         if (players.Count == 0)
@@ -204,8 +214,6 @@ public class GameManager : MonoBehaviour
             t.interactable = true;
             t.isOn = false;
         }
-
-        players = new List<PlayerData>();
 
         GameObject[] playerGameObjects = GameObject.FindGameObjectsWithTag("Player");
 
