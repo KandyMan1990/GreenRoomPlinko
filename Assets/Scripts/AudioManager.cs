@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
     AudioSource sfxSource;
     [SerializeField]
     AudioSource musicSource;
+    [SerializeField]
+    AudioSource voiceSource;
 
     [SerializeField]
     AudioClip playerTransition;
@@ -17,6 +19,8 @@ public class AudioManager : MonoBehaviour
     AudioClip winner;
     [SerializeField]
     AudioClip[] collisions;
+    [SerializeField]
+    AudioClip[] instantWins;
     [SerializeField]
     [Range(0f, 1f)]
     float transitionVolume = 0.7f;
@@ -29,6 +33,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     [Range(0f, 1f)]
     float winnerVolume = 0.5f;
+    [SerializeField]
+    [Range(0f, 1f)]
+    float instantWinVolume = 0.5f;
 
     void Awake()
     {
@@ -72,5 +79,11 @@ public class AudioManager : MonoBehaviour
     public void PlayWinner()
     {
         StartCoroutine(PlayClip(winner, winnerVolume, musicSource));
+    }
+
+    public void PlayInstantWin()
+    {
+        AudioClip clip = instantWins[Random.Range(0, instantWins.Length)];
+        voiceSource.PlayOneShot(clip, instantWinVolume);
     }
 }

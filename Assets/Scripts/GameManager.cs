@@ -200,6 +200,11 @@ public class GameManager : MonoBehaviour
 
     void EndGame(string winner, string[] losersArray)
     {
+        if (currentRound == 1)
+        {
+            AudioManager.Instance.PlayInstantWin();
+        }
+
         AudioManager.Instance.PlayWinner();
         uiManager.Commit();
 
