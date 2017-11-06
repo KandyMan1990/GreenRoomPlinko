@@ -17443,8 +17443,8 @@ MonoBehaviour:
   Panel: {fileID: 1711608292}
   NewPlayerButton: {fileID: 1677001990}
   VersionText: {fileID: 1190973703}
-  MajorVersion: 0
-  MinorVersion: 8
+  MajorVersion: 1
+  MinorVersion: 0
   Revision: 0
   CountdownText: {fileID: 732395456}
   RoundNumberText: {fileID: 295795385}
