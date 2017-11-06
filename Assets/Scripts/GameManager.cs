@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject playerPrefab;
     [SerializeField]
-    Button startGameButton;
+    Button[] uiButtons;
     [SerializeField]
     GameObject playersPanel;
     [SerializeField]
@@ -88,7 +88,11 @@ public class GameManager : MonoBehaviour
         currentRound = 0;
         AudioManager.Instance.PlayPlayerSpawn();
         PlayerSpawnManager.Instance.SpawnPlayers(players, playerPrefab);
-        startGameButton.interactable = false;
+
+        foreach (Button btn in uiButtons)
+        {
+            btn.interactable = false;
+        }   
 
         toggles = playersPanel.GetComponentsInChildren<Toggle>();
 
@@ -211,7 +215,10 @@ public class GameManager : MonoBehaviour
 
         loserText.text = losersText;
 
-        startGameButton.interactable = true;
+        foreach (Button btn in uiButtons)
+        {
+            btn.interactable = true;
+        }
 
         foreach (Toggle t in toggles)
         {

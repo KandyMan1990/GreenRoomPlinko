@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-[RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
-    AudioSource source;
+    [SerializeField]
+    AudioSource sfxSource;
+    [SerializeField]
+    AudioSource musicSource;
 
     [SerializeField]
     AudioClip playerTransition;
@@ -33,45 +35,44 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        source = GetComponent<AudioSource>();
     }
 
     public void PlayPlayerTransition()
     {
-        StartCoroutine(PlayClip(playerTransition, transitionVolume));
+        StartCoroutine(PlayClip(playerTransition, transitionVolume, sfxSource));
     }
 
-    IEnumerator PlayClip(AudioClip clip, float volume)
+    IEnumerator PlayClip(AudioClip clip, float volume, AudioSource s)
     {
-        source.clip = clip;
-        source.volume = volume;
-        source.Play();
+        s.clip = clip;
+        s.volume = volume;
+        s.Play();
 
-        while (source.isPlaying)
+        while (s.isPlaying)
         {
             yield return null;
         }
 
-        source.clip = null;
-        source.volume = 1f;
+        s.clip = null;
+        s.volume = 1f;
     }
 
     public void PlayPlayerSpawn()
     {
-        StartCoroutine(PlayClip(spawnPlayers, spawnVolume));
+        StartCoroutine(PlayClip(spawnPlayers, spawnVolume, sfxSource));
     }
 
     public void PlayCollision()
     {
-        if (source.clip == playerTransition && source.isPlaying)
+        if (sfxSource.clip == playerTransition && sfxSource.isPlaying)
             return;
 
         AudioClip clip = collisions[Random.Range(0, collisions.Length)];
-        source.PlayOneShot(clip, collisionVolume);
+        sfxSource.PlayOneShot(clip, collisionVolume);
     }
 
     public void PlayWinner()
     {
-        StartCoroutine(PlayClip(winner, winnerVolume));
+        StartCoroutine(PlayClip(winner, winnerVolume, musicSource));
     }
 }
