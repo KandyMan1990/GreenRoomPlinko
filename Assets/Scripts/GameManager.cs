@@ -380,11 +380,21 @@ public class GameManager : MonoBehaviour
 
         if (finishedPlayers.All(element => element.GetWinner))
         {
+            if (finishedPlayers.Any(element => element.GetInstantWinner))
+            {
+                return false;
+            }
+
             return true;
         }
 
         if (finishedPlayers.All(element => !element.GetWinner))
         {
+            if (finishedPlayers.Any(element => element.GetInstantWinner))
+            {
+                return false;
+            }
+
             return true;
         }
 
