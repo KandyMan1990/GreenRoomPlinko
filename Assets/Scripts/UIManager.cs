@@ -28,19 +28,42 @@ public class UIManager : MonoBehaviour
     {
         CountdownText.gameObject.SetActive(false);
         RoundNumberText.gameObject.SetActive(false);
-        Players = Data.Load();
 
         VersionText.text = string.Format("V{0}.{1}.{2}", MajorVersion, MinorVersion, Revision);
 
-        foreach (PlayerData player in Players)
-        {
-            InstantiateNewPlayer(player);
-        }
+        CreatePlayersList();
     }
 
     public void Commit()
     {
         Data.Save(Players);
+    }
+
+    public void CreatePlayersList()
+    {
+        Players = Data.Load();
+
+        if (Players.Count > 0)
+        {
+            Players.Sort((x, y) => y.Wins.CompareTo(x.Wins));
+
+            if (Panel.childCount > 0)
+            {
+                List<GameObject> children = new List<GameObject>();
+                foreach (Transform child in Panel)
+                {
+                    children.Add(child.gameObject);
+                }
+                foreach (GameObject child in children)
+                {
+                    Destroy(child);
+                }
+            }
+            foreach (PlayerData player in Players)
+            {
+                InstantiateNewPlayer(player);
+            }
+        }
     }
 
     public void AddNewPlayerButtonOnClick(string name)

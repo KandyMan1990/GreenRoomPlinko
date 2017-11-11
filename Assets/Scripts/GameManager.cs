@@ -220,16 +220,7 @@ public class GameManager : MonoBehaviour
 
         loserText.text = losersText;
 
-        foreach (Button btn in uiButtons)
-        {
-            btn.interactable = true;
-        }
-
-        foreach (Toggle t in toggles)
-        {
-            t.interactable = true;
-            t.isOn = false;
-        }
+        uiManager.CreatePlayersList();
 
         GameObject[] playerGameObjects = GameObject.FindGameObjectsWithTag("Player");
 
