@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61123281489510568}
   m_Layer: 0
   m_Name: Landing Zone
-  m_TagString: Untagged
+  m_TagString: LandingZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f050a46fa33c605408797c008e42caee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultColour: {r: 0, g: 0, b: 0, a: 0}
   WinColour: {r: 1, g: 0.1254902, b: 0, a: 1}
   LoseColour: {r: 0, g: 1, b: 0.49803922, a: 1}
   InstantWinColour: {r: 0.887, g: 0.953, b: 0.109, a: 1}
@@ -91,6 +92,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -106,6 +108,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

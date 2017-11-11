@@ -50,22 +50,33 @@ public class PlayerGameobject : MonoBehaviour
         get { return pd; }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("LandingZone"))
+        {
+            timeInTrigger = 0f;
+        }
+    }
+
     void OnTriggerStay2D(Collider2D collision)
     {
-        timeInTrigger += Time.deltaTime;
-
-        if (timeInTrigger > 3f && rb.velocity != Vector2.zero)
+        if (collision.CompareTag("LandingZone"))
         {
-            rb.velocity = Vector2.zero;
-        }
+            timeInTrigger += Time.deltaTime;
 
-        if (rb.velocity == Vector2.zero && !toldGameManager)
-        {
-            toldGameManager = true;
-            LandingZone ld = collision.gameObject.GetComponent<LandingZone>();
-            bool winZone = ld.WinZone;
-            bool instantWinZone = ld.InstantWinZone;
-            GameManager.Instance.PlayerFinished(new FinishedPlayer(this, transform, winZone, instantWinZone));
+            if (timeInTrigger > 3f && rb.velocity != Vector2.zero)
+            {
+                rb.velocity = Vector2.zero;
+            }
+
+            if (rb.velocity == Vector2.zero && !toldGameManager)
+            {
+                toldGameManager = true;
+                LandingZone ld = collision.gameObject.GetComponent<LandingZone>();
+                bool winZone = ld.WinZone;
+                bool instantWinZone = ld.InstantWinZone;
+                GameManager.Instance.PlayerFinished(new FinishedPlayer(this, transform, winZone, instantWinZone));
+            }
         }
     }
 

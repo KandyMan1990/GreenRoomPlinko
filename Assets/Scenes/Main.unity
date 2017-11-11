@@ -2137,6 +2137,7 @@ MonoBehaviour:
   - {fileID: 1858569375}
   - {fileID: 1118320094}
   playersPanel: {fileID: 1711608291}
+  playerUiAlpha: 0.8
 --- !u!4 &157051429
 Transform:
   m_ObjectHideFlags: 0
@@ -7010,7 +7011,7 @@ Prefab:
     - target: {fileID: 61123281489510568, guid: 2c400807e7905e84fab5718e8e59bdb7,
         type: 2}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 0.72
+      value: 0.74
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c400807e7905e84fab5718e8e59bdb7, type: 2}
@@ -9917,7 +9918,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1190973701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 939.8409, y: -540.08954, z: 0}
+  m_LocalPosition: {x: 940, y: -540, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1550680953}
@@ -12507,8 +12508,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1550680949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 670, y: 377, z: 0}
-  m_LocalScale: {x: 0.6980324, y: 0.6980324, z: 0.6980324}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1841004169}
   - {fileID: 89586646}
@@ -15351,7 +15352,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1841004168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 699.8409, y: 0, z: 0}
+  m_LocalPosition: {x: 700, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 754557541}

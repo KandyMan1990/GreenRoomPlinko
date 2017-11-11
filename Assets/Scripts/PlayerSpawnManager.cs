@@ -10,6 +10,9 @@ public class PlayerSpawnManager : MonoBehaviour
     List<Transform> SpawnPoints;
     [SerializeField]
     GameObject playersPanel;
+    [SerializeField]
+    [Range(0f, 1f)]
+    float playerUiAlpha = 0.5f;
     PlayerUIComponent[] playersUIs;
 
     void Awake()
@@ -47,7 +50,7 @@ public class PlayerSpawnManager : MonoBehaviour
                 if (pgo.GetPlayerData == playersUIs[j].GetPlayerData)
                 {
                     Color c = go.GetComponent<SpriteRenderer>().color;
-                    c.a = 0.5f;
+                    c.a = playerUiAlpha;
                     playersUIs[j].background.color = c;
 
                     playersUIs[j].IncrementPlayed();
