@@ -239,6 +239,8 @@ public class GameManager : MonoBehaviour
         {
             l.RevertToOriginalState();
         }
+
+        players.Clear();
     }
 
     IEnumerator FinalFade(GameObject go)
