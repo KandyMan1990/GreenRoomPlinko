@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,7 +46,7 @@ public class UIManager : MonoBehaviour
 
         if (Players.Count > 0)
         {
-            Players.Sort((x, y) => y.Wins.CompareTo(x.Wins));
+            Players = Players.OrderBy(x => x.Played/x.Wins).ToList();
 
             if (Panel.childCount > 0)
             {
