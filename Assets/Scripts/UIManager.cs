@@ -23,12 +23,16 @@ public class UIManager : MonoBehaviour
     Text CountdownText;
     [SerializeField]
     Text RoundNumberText;
+
     List<PlayerData> Players = new List<PlayerData>();
 
     void Awake()
     {
-        CountdownText.gameObject.SetActive(false);
-        RoundNumberText.gameObject.SetActive(false);
+        if (CountdownText)
+            CountdownText.gameObject.SetActive(false);
+
+        if (RoundNumberText)
+            RoundNumberText.gameObject.SetActive(false);
 
         VersionText.text = string.Format("V{0}.{1}.{2}", MajorVersion, MinorVersion, Revision);
 
