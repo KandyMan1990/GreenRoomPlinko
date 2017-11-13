@@ -328,7 +328,12 @@ public class GameManager : MonoBehaviour
                             }
                         }
 
-                        EndGame(p.GetPlayerGameobject.GetPlayerData.Name, loserNames.ToArray());
+                        string winner = p.GetPlayerGameobject.GetPlayerData.Name;
+                        string[] losers = loserNames.ToArray();
+
+                        Data.Save(winner, losers);
+
+                        EndGame(winner, losers);
                         return;
                     }
                 }
