@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -241,6 +242,18 @@ public class GameManager : MonoBehaviour
         }
 
         players.Clear();
+
+        StartCoroutine(ReturnToMenu());
+    }
+
+    IEnumerator ReturnToMenu()
+    {
+        AsyncOperation async = SceneManager.LoadSceneAsync("First");
+        async.allowSceneActivation = false;
+
+        yield return new WaitForSeconds(AudioManager.Instance.GetWinnerLength);
+
+        async.allowSceneActivation = true;
     }
 
     IEnumerator FinalFade(GameObject go)

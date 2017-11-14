@@ -78,12 +78,17 @@ public class AudioManager : MonoBehaviour
 
     public void PlayWinner()
     {
-        StartCoroutine(PlayClip(winner, winnerVolume, musicSource));
+        musicSource.PlayOneShot(winner, winnerVolume);
     }
 
     public void PlayInstantWin()
     {
         AudioClip clip = instantWins[Random.Range(0, instantWins.Length)];
         voiceSource.PlayOneShot(clip, instantWinVolume);
+    }
+
+    public float GetWinnerLength
+    {
+        get { return winner.length; }
     }
 }
