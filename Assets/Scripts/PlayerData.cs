@@ -18,4 +18,9 @@ public class PlayerData
     {
         return Name;
     }
+
+    public float WinLoseRatio
+    {
+        get { return Wins == 0 ? 0f : (float)Wins / Played; }
+    }
 }

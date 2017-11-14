@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
 
         if (Players.Count > 0)
         {
-            Players = Players.OrderBy(x => x.Played/x.Wins).ToList();
+            Players = Players.OrderBy(x => x.WinLoseRatio).Reverse().ToList();
 
             if (Panel.childCount > 0)
             {
