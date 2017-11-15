@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
     Text CountdownText;
     [SerializeField]
     Text RoundNumberText;
+    [SerializeField]
+    Text GameNumber;
 
     List<PlayerData> Players = new List<PlayerData>();
 
@@ -68,6 +70,13 @@ public class UIManager : MonoBehaviour
             {
                 InstantiateNewPlayer(player);
             }
+
+            int numberOfGames = 0;
+            foreach (PlayerData p in Players)
+            {
+                numberOfGames += p.Wins;
+            }
+            GameNumber.text = string.Format("Games played: {0}", numberOfGames);
         }
     }
 
