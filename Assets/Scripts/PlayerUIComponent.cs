@@ -10,6 +10,8 @@ public class PlayerUIComponent : MonoBehaviour
     [SerializeField]
     Text Wins;
     [SerializeField]
+    Text WinLosePercentage;
+    [SerializeField]
     PlayerData playerData;
     public Image background;
 
@@ -48,6 +50,7 @@ public class PlayerUIComponent : MonoBehaviour
         PlayerName.text = playerData.Name;
         Played.text = playerData.Played.ToString();
         Wins.text = playerData.Wins.ToString();
+        WinLosePercentage.text = string.Format("{0}%", (playerData.WinLoseRatio * 100).ToString("n2"));
     }
 
     public PlayerData GetPlayerData
