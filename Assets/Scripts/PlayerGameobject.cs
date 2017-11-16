@@ -8,17 +8,18 @@ public class PlayerGameobject : MonoBehaviour
     bool toldGameManager;
     PlayerData pd;
     float timeInTrigger = 0f;
+    Color col;
 
     void Awake()
     {
         uiText = GetComponentInChildren<Text>();
         rb = GetComponent<Rigidbody2D>();
 
-        Color color = new Color(Random.Range(0f, 0.85f), Random.Range(0f, 0.85f), Random.Range(0f, 0.85f));
+        col = ColourPool.Instance.GetColour;
 
-        GetComponent<SpriteRenderer>().color = color;
+        GetComponent<SpriteRenderer>().color = col;
 
-        GradientColorKey gradientColorKey = new GradientColorKey(color, 0f);
+        GradientColorKey gradientColorKey = new GradientColorKey(col, 0f);
         GradientColorKey[] colourKeys = new GradientColorKey[2];
         colourKeys[0] = gradientColorKey;
         colourKeys[1] = gradientColorKey;
@@ -48,6 +49,11 @@ public class PlayerGameobject : MonoBehaviour
     public PlayerData GetPlayerData
     {
         get { return pd; }
+    }
+
+    public Color GetColour
+    {
+        get { return col; }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

@@ -139,6 +139,7 @@ public class GameManager : MonoBehaviour
 
         if (playersToRemove.Contains(fp))
         {
+            ColourPool.Instance.ReturnColour(fp.GetPlayerGameobject.GetColour);
             Destroy(fp.GetTransform.gameObject);
             losers.Add(fp.GetPlayerGameobject.GetPlayerData);
         }
@@ -277,6 +278,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
+        ColourPool.Instance.ReturnColour(go.GetComponent<PlayerGameobject>().GetColour);
         Destroy(go);
     }
 
