@@ -140,6 +140,17 @@ public class GameManager : MonoBehaviour
         if (playersToRemove.Contains(fp))
         {
             ColourPool.Instance.ReturnColour(fp.GetPlayerGameobject.GetColour);
+
+            foreach (Transform obj in playersPanel.transform)
+            {
+                PlayerUIComponent pui = obj.GetComponent<PlayerUIComponent>();
+
+                if (pui != null && pui.GetPlayerData == fp.GetPlayerGameobject.GetPlayerData)
+                {
+                    pui.background.color = new Color(0f, 0f, 0f, 0f);
+                }
+            }
+
             Destroy(fp.GetTransform.gameObject);
             losers.Add(fp.GetPlayerGameobject.GetPlayerData);
         }
@@ -312,6 +323,7 @@ public class GameManager : MonoBehaviour
     public void PlayerFinished(FinishedPlayer fp)
     {
         finishedPlayers.Add(fp);
+
         if (finishedPlayers.Count + losers.Count == players.Count)
         {
             CheckWinners();
