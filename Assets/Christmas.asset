@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballSprite: {fileID: 21300000, guid: 5092ad8b1428ed74f864ee98b3c14cff, type: 3}
   background: {fileID: 21300000, guid: 24d419d12c3a6af4f88e772beb4e9ab7, type: 3}
-  backgroundMusic: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: fb1072251f990a2408b4c04dead598ca, type: 3}
   objectToRandomlySpawn: {fileID: 0}

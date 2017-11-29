@@ -35,11 +35,38 @@ public class AudioManager : MonoBehaviour
     float winnerVolume = 0.5f;
     [SerializeField]
     [Range(0f, 1f)]
+    float backgroundMusicVolume = 0.5f;
+    [SerializeField]
+    [Range(0f, 1f)]
     float instantWinVolume = 0.5f;
+
+    [SerializeField]
+    VisualConfig defaultVisualConfig;
+    [SerializeField]
+    VisualConfig christmasVisualConfig;
+
+    VisualConfig visualConfig;
 
     void Awake()
     {
         Instance = this;
+        SetVisualConfig();
+
+        if (visualConfig.BackgroundMusic != null)
+        {
+            PlayBackgroundMusic();
+        }
+    }
+
+    void SetVisualConfig()
+    {
+        if (System.DateTime.Now.Month == 12 && System.DateTime.Now.Day <= 25)
+        {
+            visualConfig = christmasVisualConfig;
+            return;
+        }
+
+        visualConfig = defaultVisualConfig;
     }
 
     public void PlayPlayerTransition()
@@ -78,7 +105,17 @@ public class AudioManager : MonoBehaviour
 
     public void PlayWinner()
     {
+        musicSource.loop = false;
+        musicSource.Stop();
         musicSource.PlayOneShot(winner, winnerVolume);
+    }
+
+    void PlayBackgroundMusic()
+    {
+        musicSource.loop = true;
+        musicSource.clip = visualConfig.BackgroundMusic;
+        musicSource.volume = backgroundMusicVolume;
+        musicSource.Play();
     }
 
     public void PlayInstantWin()
