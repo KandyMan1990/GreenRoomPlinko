@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d7ac8d21f3a43459a34b1be1042481, type: 3}
+  m_Name: Christmas
+  m_EditorClassIdentifier: 
+  ballSprite: {fileID: 21300000, guid: 5092ad8b1428ed74f864ee98b3c14cff, type: 3}
+  background: {fileID: 21300000, guid: 24d419d12c3a6af4f88e772beb4e9ab7, type: 3}
+  backgroundMusic: {fileID: 0}
+  objectToRandomlySpawn: {fileID: 0}

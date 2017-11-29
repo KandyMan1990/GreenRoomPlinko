@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -25,11 +26,18 @@ public class GameManager : MonoBehaviour
     Text winnerText;
     [SerializeField]
     Text loserText;
+    [SerializeField]
+    VisualConfig defaultVisualConfig;
+    [SerializeField]
+    VisualConfig christmasVisualConfig;
+    [SerializeField]
+    SpriteRenderer background;
 
     WaitForSeconds wait = new WaitForSeconds(2f);
     LandingZone[] landingZones;
     Toggle[] toggles;
     PlayerUIComponent[] playersUIs;
+    VisualConfig visualConfig;
 
     public static GameManager Instance { get; private set; }
     List<PlayerData> players = new List<PlayerData>();
@@ -41,11 +49,25 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        SetVisualConfig();
+        background.sprite = visualConfig.Background;
+        playerPrefab.GetComponent<SpriteRenderer>().sprite = visualConfig.BallSprite;
     }
 
     void Start()
     {
         landingZones = landingZonesGameObject.GetComponentsInChildren<LandingZone>();
+    }
+
+    void SetVisualConfig()
+    {
+        if (DateTime.Now.Month == 12 && DateTime.Now.Day <= 25)
+        {
+            visualConfig = christmasVisualConfig;
+            return;
+        }
+
+        visualConfig = defaultVisualConfig;
     }
 
     public void AddPlayer(PlayerData player)

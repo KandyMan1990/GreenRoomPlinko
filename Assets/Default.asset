@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d7ac8d21f3a43459a34b1be1042481, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  ballSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  background: {fileID: 21300000, guid: 19e4d20ba3ca7354796f5ef0c24165a8, type: 3}
+  backgroundMusic: {fileID: 0}
+  objectToRandomlySpawn: {fileID: 0}

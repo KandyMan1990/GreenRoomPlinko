@@ -8737,6 +8737,11 @@ MonoBehaviour:
   winnersPanel: {fileID: 273435381}
   winnerText: {fileID: 387524405}
   loserText: {fileID: 130192682}
+  defaultVisualConfig: {fileID: 11400000, guid: 6d68a0cc52ee21242af5eebfd1e21d16,
+    type: 2}
+  christmasVisualConfig: {fileID: 11400000, guid: 0d732b873b293844c9aa0448ab00544e,
+    type: 2}
+  background: {fileID: 1582855019}
 --- !u!4 &1009369668
 Transform:
   m_ObjectHideFlags: 0
