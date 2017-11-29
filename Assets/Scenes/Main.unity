@@ -12072,7 +12072,7 @@ MonoBehaviour:
   transitionVolume: 0.5
   spawnVolume: 0.45
   collisionVolume: 0.18
-  winnerVolume: 1
+  winnerVolume: 0.75
   backgroundMusicVolume: 0.5
   instantWinVolume: 0.75
   defaultVisualConfig: {fileID: 11400000, guid: 6d68a0cc52ee21242af5eebfd1e21d16,
@@ -17471,7 +17471,7 @@ MonoBehaviour:
   VersionText: {fileID: 1190973703}
   MajorVersion: 1
   MinorVersion: 1
-  Revision: 0
+  Revision: 1
   CountdownText: {fileID: 732395456}
   RoundNumberText: {fileID: 295795385}
   GameNumber: {fileID: 782180943}
