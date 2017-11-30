@@ -17,5 +17,5 @@ MonoBehaviour:
   objectToRandomlySpawn: {fileID: 0}
   victoryMusic: {fileID: 8300000, guid: 5893d3b319b30f8429cb7c685c6c8eb7, type: 3}
   playerCollideSfx:
-  - {fileID: 8300000, guid: eb51052f6875bce47a2412051d467d88, type: 3}
-  - {fileID: 8300000, guid: 8f7eab3e8873c714eb4f67aacc19c742, type: 3}
+  - {fileID: 8300000, guid: 5058cb806b6cd0d4f9b5e18ef19a58dd, type: 3}
+  - {fileID: 8300000, guid: 020339115299bb64b898fc936129307f, type: 3}
