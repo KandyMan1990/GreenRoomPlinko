@@ -15,3 +15,7 @@ MonoBehaviour:
   background: {fileID: 21300000, guid: 24d419d12c3a6af4f88e772beb4e9ab7, type: 3}
   backgroundMusic: {fileID: 8300000, guid: fb1072251f990a2408b4c04dead598ca, type: 3}
   objectToRandomlySpawn: {fileID: 0}
+  victoryMusic: {fileID: 8300000, guid: 5893d3b319b30f8429cb7c685c6c8eb7, type: 3}
+  playerCollideSfx:
+  - {fileID: 8300000, guid: eb51052f6875bce47a2412051d467d88, type: 3}
+  - {fileID: 8300000, guid: 8f7eab3e8873c714eb4f67aacc19c742, type: 3}

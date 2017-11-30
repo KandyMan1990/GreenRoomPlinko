@@ -367,9 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb868d24c14b78459ee973c5dabf7e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultVisualConfig: {fileID: 11400000, guid: 6d68a0cc52ee21242af5eebfd1e21d16,
-    type: 2}
-  christmasVisualConfig: {fileID: 11400000, guid: 0d732b873b293844c9aa0448ab00544e,
+  visualConfigService: {fileID: 11400000, guid: 9fc2d161b67d5064f9e2a2b58f5a9b12,
     type: 2}
   background: {fileID: 1272552726}
 --- !u!4 &365964216

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -27,11 +26,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Text loserText;
     [SerializeField]
-    VisualConfig defaultVisualConfig;
-    [SerializeField]
-    VisualConfig christmasVisualConfig;
-    [SerializeField]
     SpriteRenderer background;
+    [SerializeField]
+    VisualConfigService visualConfigService;
 
     WaitForSeconds wait = new WaitForSeconds(2f);
     LandingZone[] landingZones;
@@ -49,7 +46,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        SetVisualConfig();
+        visualConfig = visualConfigService.GetVisualConfig;
+
         background.sprite = visualConfig.Background;
         playerPrefab.GetComponent<SpriteRenderer>().sprite = visualConfig.BallSprite;
     }
@@ -57,17 +55,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         landingZones = landingZonesGameObject.GetComponentsInChildren<LandingZone>();
-    }
-
-    void SetVisualConfig()
-    {
-        if (DateTime.Now.Month == 12 && DateTime.Now.Day <= 25)
-        {
-            visualConfig = christmasVisualConfig;
-            return;
-        }
-
-        visualConfig = defaultVisualConfig;
     }
 
     public void AddPlayer(PlayerData player)

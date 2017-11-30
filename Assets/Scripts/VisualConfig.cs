@@ -11,6 +11,10 @@ public class VisualConfig : ScriptableObject
     AudioClip backgroundMusic;
     [SerializeField]
     GameObject objectToRandomlySpawn;
+    [SerializeField]
+    AudioClip victoryMusic;
+    [SerializeField]
+    AudioClip[] playerCollideSfx;
 
     public Sprite BallSprite
     {
@@ -30,5 +34,15 @@ public class VisualConfig : ScriptableObject
     public GameObject ObjectToRandomlySpawn
     {
         get { return objectToRandomlySpawn; }
+    }
+
+    public AudioClip VictoryMusic
+    {
+        get { return victoryMusic; }
+    }
+
+    public AudioClip[] PlayerCollideSfx
+    {
+        get { return playerCollideSfx; }
     }
 }

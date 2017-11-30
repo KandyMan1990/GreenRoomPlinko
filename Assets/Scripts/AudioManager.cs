@@ -16,10 +16,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     AudioClip spawnPlayers;
     [SerializeField]
-    AudioClip winner;
-    [SerializeField]
-    AudioClip[] collisions;
-    [SerializeField]
     AudioClip[] instantWins;
     [SerializeField]
     [Range(0f, 1f)]
@@ -39,34 +35,25 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     [Range(0f, 1f)]
     float instantWinVolume = 0.5f;
-
     [SerializeField]
-    VisualConfig defaultVisualConfig;
-    [SerializeField]
-    VisualConfig christmasVisualConfig;
+    VisualConfigService visualConfigService;
 
     VisualConfig visualConfig;
+    AudioClip winner;
+    AudioClip[] collisions;
 
     void Awake()
     {
         Instance = this;
-        SetVisualConfig();
+        visualConfig = visualConfigService.GetVisualConfig;
+
+        winner = visualConfig.VictoryMusic;
+        collisions = visualConfig.PlayerCollideSfx;
 
         if (visualConfig.BackgroundMusic != null)
         {
             PlayBackgroundMusic();
         }
-    }
-
-    void SetVisualConfig()
-    {
-        if (System.DateTime.Now.Month == 12 && System.DateTime.Now.Day <= 25)
-        {
-            visualConfig = christmasVisualConfig;
-            return;
-        }
-
-        visualConfig = defaultVisualConfig;
     }
 
     public void PlayPlayerTransition()
