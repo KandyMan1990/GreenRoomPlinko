@@ -12056,10 +12056,6 @@ MonoBehaviour:
   voiceSource: {fileID: 1730122696}
   playerTransition: {fileID: 8300000, guid: 987a619ecda90bd499a5fca21ce17262, type: 3}
   spawnPlayers: {fileID: 8300000, guid: f2554cbe62e6d9645abb6af50697dc89, type: 3}
-  winner: {fileID: 8300000, guid: 5893d3b319b30f8429cb7c685c6c8eb7, type: 3}
-  collisions:
-  - {fileID: 8300000, guid: eb51052f6875bce47a2412051d467d88, type: 3}
-  - {fileID: 8300000, guid: 8f7eab3e8873c714eb4f67aacc19c742, type: 3}
   instantWins:
   - {fileID: 8300000, guid: ed44f2b37ece9d7419645a581d94fcce, type: 3}
   - {fileID: 8300000, guid: 7da2c581fc397d2419891f6099c86a4d, type: 3}
@@ -17467,7 +17463,7 @@ MonoBehaviour:
   VersionText: {fileID: 1190973703}
   MajorVersion: 1
   MinorVersion: 1
-  Revision: 1
+  Revision: 2
   CountdownText: {fileID: 732395456}
   RoundNumberText: {fileID: 295795385}
   GameNumber: {fileID: 782180943}
