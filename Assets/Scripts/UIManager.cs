@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
     Text RoundNumberText;
     [SerializeField]
     Text GameNumber;
+    [SerializeField]
+    TableOrderPrefs tableOrderPrefs;
 
     List<PlayerData> Players = new List<PlayerData>();
 
@@ -37,7 +39,10 @@ public class UIManager : MonoBehaviour
             RoundNumberText.gameObject.SetActive(false);
 
         VersionText.text = string.Format("V{0}.{1}.{2}", MajorVersion, MinorVersion, Revision);
+    }
 
+    void Start()
+    {
         CreatePlayersList();
     }
 
@@ -52,7 +57,7 @@ public class UIManager : MonoBehaviour
 
         if (Players.Count > 0)
         {
-            Players = Players.OrderBy(x => x.WinLoseRatio).Reverse().ToList();
+            Players = tableOrderPrefs.OrderByPercentage ? Players.OrderBy(x => x.WinLoseRatio).Reverse().ToList() : Players.OrderBy(x => x.Wins).Reverse().ToList();
 
             if (Panel.childCount > 0)
             {
