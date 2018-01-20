@@ -439,4 +439,9 @@ public class GameManager : MonoBehaviour
 
         return false;
     }
+
+    public int CurrentRound
+    {
+        get { return currentRound; }
+    }
 }

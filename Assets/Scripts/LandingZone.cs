@@ -51,7 +51,7 @@ public class LandingZone : MonoBehaviour
     {
         toggleWinZone();
 
-        if (winZone && !instantWin && Random.Range(0, 100) <= 1)
+        if (winZone && !instantWin && Random.Range(0, 50 + (GameManager.Instance.CurrentRound * 10)) <= 1)
         {
             instantWin = true;
             StartCoroutine(FadeColour(InstantWinColour));
