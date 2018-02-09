@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
 
         if (Players.Count > 0)
         {
-            Players = tableOrderPrefs.OrderByPercentage ? Players.OrderBy(x => x.WinLoseRatio).Reverse().ToList() : Players.OrderBy(x => x.Wins).Reverse().ToList();
+            Players = Players.OrderBy(x => x.Score).Reverse().ToList();
 
             if (Panel.childCount > 0)
             {
@@ -71,16 +71,14 @@ public class UIManager : MonoBehaviour
                     Destroy(child);
                 }
             }
+            int numberOfGames = 0;
+
             foreach (PlayerData player in Players)
             {
                 InstantiateNewPlayer(player);
+                numberOfGames += player.Played;
             }
 
-            int numberOfGames = 0;
-            foreach (PlayerData p in Players)
-            {
-                numberOfGames += p.Wins;
-            }
             GameNumber.text = string.Format("Games played: {0}", numberOfGames);
         }
     }

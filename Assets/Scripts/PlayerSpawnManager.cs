@@ -52,8 +52,6 @@ public class PlayerSpawnManager : MonoBehaviour
                     Color c = go.GetComponent<SpriteRenderer>().color;
                     c.a = playerUiAlpha;
                     playersUIs[j].background.color = c;
-
-                    playersUIs[j].IncrementPlayed();
                 }
             }
         }

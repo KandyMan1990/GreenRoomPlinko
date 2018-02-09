@@ -338,9 +338,12 @@ public class GameManager : MonoBehaviour
             CheckWinners();
             if (finishedPlayers.Count - playersToRemove.Count == 1)
             {
+                List<string> loserNames = new List<string>();
+                string winner = string.Empty;
+
                 foreach (FinishedPlayer p in finishedPlayers)
                 {
-                    if (!playersToRemove.Contains(p))
+                    if (playersToRemove.Contains(p))
                     {
                         playersUIs = playersPanel.GetComponentsInChildren<PlayerUIComponent>();
 
@@ -350,29 +353,36 @@ public class GameManager : MonoBehaviour
 
                             if (ui.GetPlayerData == p.GetPlayerGameobject.GetPlayerData)
                             {
-                                ui.IncrementWins();
+                                ui.IncreaseScore(playersToRemove.Count);
+                                loserNames.Add(ui.GetPlayerData.Name);
+                                ui.IncrementPlayed();
                             }
                         }
+                    }
+                    else
+                    {
+                        playersUIs = playersPanel.GetComponentsInChildren<PlayerUIComponent>();
 
-                        List<string> loserNames = new List<string>(); ;
-
-                        foreach (PlayerData pd in players)
+                        foreach (PlayerUIComponent ui in playersUIs)
                         {
-                            if (pd != p.GetPlayerGameobject.GetPlayerData)
+                            ui.background.color = new Color(ui.background.color.r, ui.background.color.g, ui.background.color.b, 0f);
+
+                            if (ui.GetPlayerData == p.GetPlayerGameobject.GetPlayerData)
                             {
-                                loserNames.Add(pd.Name);
+                                ui.IncreaseScore(-playersToRemove.Count);
+                                winner = ui.GetPlayerData.Name;
+                                ui.IncrementPlayed();
                             }
                         }
-
-                        string winner = p.GetPlayerGameobject.GetPlayerData.Name;
-                        string[] losers = loserNames.ToArray();
-
-                        Data.Save(winner, losers);
-
-                        EndGame(winner, losers);
-                        return;
                     }
                 }
+                
+                string[] losers = loserNames.ToArray();
+
+                Data.Save(winner, losers);
+
+                EndGame(winner, losers);
+                return;
             }
 
             PrepareNextRound();
