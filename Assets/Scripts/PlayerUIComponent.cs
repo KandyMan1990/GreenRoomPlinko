@@ -8,9 +8,7 @@ public class PlayerUIComponent : MonoBehaviour
     [SerializeField]
     Text Played;
     [SerializeField]
-    Text Wins;
-    [SerializeField]
-    Text WinLosePercentage;
+    Text Score;
     [SerializeField]
     PlayerData playerData;
     public Image background;
@@ -37,10 +35,10 @@ public class PlayerUIComponent : MonoBehaviour
         Played.text = playerData.Played.ToString();
     }
 
-    public void IncrementWins()
+    public void IncreaseScore(int value)
     {
-        playerData.Wins++;
-        Wins.text = playerData.Wins.ToString();
+        playerData.Score += value;
+        Score.text = playerData.Score.ToString();
     }
 
     public void CreateComponent(PlayerData player)
@@ -49,8 +47,7 @@ public class PlayerUIComponent : MonoBehaviour
 
         PlayerName.text = playerData.Name;
         Played.text = playerData.Played.ToString();
-        Wins.text = playerData.Wins.ToString();
-        WinLosePercentage.text = string.Format("{0}%", (playerData.WinLoseRatio * 100).ToString("n2"));
+        Score.text = playerData.Score.ToString();
     }
 
     public PlayerData GetPlayerData

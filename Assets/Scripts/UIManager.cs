@@ -24,8 +24,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Text RoundNumberText;
     [SerializeField]
-    Text GameNumber;
-    [SerializeField]
     TableOrderPrefs tableOrderPrefs;
 
     List<PlayerData> Players = new List<PlayerData>();
@@ -57,7 +55,7 @@ public class UIManager : MonoBehaviour
 
         if (Players.Count > 0)
         {
-            Players = tableOrderPrefs.OrderByPercentage ? Players.OrderBy(x => x.WinLoseRatio).Reverse().ToList() : Players.OrderBy(x => x.Wins).Reverse().ToList();
+            Players = tableOrderPrefs.OrderByAscending ? Players.OrderBy(x => x.Score).Reverse().ToList() : Players.OrderBy(x => x.Score).ToList();
 
             if (Panel.childCount > 0)
             {
@@ -71,17 +69,11 @@ public class UIManager : MonoBehaviour
                     Destroy(child);
                 }
             }
+
             foreach (PlayerData player in Players)
             {
                 InstantiateNewPlayer(player);
             }
-
-            int numberOfGames = 0;
-            foreach (PlayerData p in Players)
-            {
-                numberOfGames += p.Wins;
-            }
-            GameNumber.text = string.Format("Games played: {0}", numberOfGames);
         }
     }
 

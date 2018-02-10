@@ -12,14 +12,14 @@ public class TableOrderPrefs : MonoBehaviour
         }
     }
 
-    public bool OrderByPercentage
+    public bool OrderByAscending
     {
         get { return PlayerPrefs.GetInt(key) == 1; }
     }
 
-    public void SetOrder(bool percentage)
+    public void SetOrder(bool ascending)
     {
-        int value = percentage ? 1 : 0;
+        int value = ascending ? 1 : 0;
 
         PlayerPrefs.SetInt(key, value);
     }
