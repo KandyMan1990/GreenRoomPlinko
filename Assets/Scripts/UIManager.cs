@@ -24,8 +24,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Text RoundNumberText;
     [SerializeField]
-    Text GameNumber;
-    [SerializeField]
     TableOrderPrefs tableOrderPrefs;
 
     List<PlayerData> Players = new List<PlayerData>();
@@ -71,15 +69,11 @@ public class UIManager : MonoBehaviour
                     Destroy(child);
                 }
             }
-            int numberOfGames = 0;
 
             foreach (PlayerData player in Players)
             {
                 InstantiateNewPlayer(player);
-                numberOfGames += player.Played;
             }
-
-            GameNumber.text = string.Format("Games played: {0}", numberOfGames);
         }
     }
 
