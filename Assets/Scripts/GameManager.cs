@@ -338,50 +338,37 @@ public class GameManager : MonoBehaviour
             CheckWinners();
             if (finishedPlayers.Count - playersToRemove.Count == 1)
             {
-                List<string> loserNames = new List<string>();
                 string winner = string.Empty;
+                string[] loserNames = new string[players.Count -1];
+                playersUIs = playersPanel.GetComponentsInChildren<PlayerUIComponent>();
+                int i = 0;
 
-                foreach (FinishedPlayer p in finishedPlayers)
+                foreach (PlayerUIComponent ui in playersUIs)
                 {
-                    if (playersToRemove.Contains(p))
+                    PlayerData playerData = ui.GetPlayerData;
+
+                    if (players.Contains(playerData))
                     {
-                        playersUIs = playersPanel.GetComponentsInChildren<PlayerUIComponent>();
+                        ui.background.color = new Color(ui.background.color.r, ui.background.color.g, ui.background.color.b, 0f);
+                        ui.IncrementPlayed();
 
-                        foreach (PlayerUIComponent ui in playersUIs)
+                        if (losers.Contains(playerData) || playersToRemove.Any(x => x.GetPlayerGameobject.GetPlayerData == playerData))
                         {
-                            ui.background.color = new Color(ui.background.color.r, ui.background.color.g, ui.background.color.b, 0f);
-
-                            if (ui.GetPlayerData == p.GetPlayerGameobject.GetPlayerData)
-                            {
-                                ui.IncreaseScore(playersToRemove.Count);
-                                loserNames.Add(ui.GetPlayerData.Name);
-                                ui.IncrementPlayed();
-                            }
+                            ui.IncreaseScore(players.Count - 1);
+                            loserNames[i] = playerData.Name;
+                            i++;
                         }
-                    }
-                    else
-                    {
-                        playersUIs = playersPanel.GetComponentsInChildren<PlayerUIComponent>();
-
-                        foreach (PlayerUIComponent ui in playersUIs)
+                        else
                         {
-                            ui.background.color = new Color(ui.background.color.r, ui.background.color.g, ui.background.color.b, 0f);
-
-                            if (ui.GetPlayerData == p.GetPlayerGameobject.GetPlayerData)
-                            {
-                                ui.IncreaseScore(-playersToRemove.Count);
-                                winner = ui.GetPlayerData.Name;
-                                ui.IncrementPlayed();
-                            }
+                            ui.IncreaseScore(-players.Count + 1);
+                            winner = playerData.Name;
                         }
                     }
                 }
-                
-                string[] losers = loserNames.ToArray();
 
-                Data.Save(winner, losers);
+                Data.Save(winner, loserNames);
 
-                EndGame(winner, losers);
+                EndGame(winner, loserNames);
                 return;
             }
 

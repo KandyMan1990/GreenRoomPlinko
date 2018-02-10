@@ -19,7 +19,7 @@ public class Config : MonoBehaviour
 
     void Start()
     {
-        toggle.isOn = tableOrderPrefs.OrderByPercentage;
+        toggle.isOn = tableOrderPrefs.OrderByAscending;
     }
 
     void Update()

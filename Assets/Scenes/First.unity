@@ -572,11 +572,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1550680953}
     m_Modifications:
-    - target: {fileID: 114593970620581162, guid: d28b12a61bf34ae4b8dfc346dbbbf811,
-        type: 2}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 224966226098035074, guid: d28b12a61bf34ae4b8dfc346dbbbf811,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -672,35 +667,6 @@ Prefab:
       propertyPath: tableOrderPrefs
       value: 
       objectReference: {fileID: 2136019550}
-    - target: {fileID: 1983536370614746, guid: d28b12a61bf34ae4b8dfc346dbbbf811, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114593970620581162, guid: d28b12a61bf34ae4b8dfc346dbbbf811,
-        type: 2}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114593970620581162, guid: d28b12a61bf34ae4b8dfc346dbbbf811,
-        type: 2}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114593970620581162, guid: d28b12a61bf34ae4b8dfc346dbbbf811,
-        type: 2}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 970708811}
-    - target: {fileID: 114593970620581162, guid: d28b12a61bf34ae4b8dfc346dbbbf811,
-        type: 2}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetOrderPreference
-      objectReference: {fileID: 0}
-    - target: {fileID: 114593970620581162, guid: d28b12a61bf34ae4b8dfc346dbbbf811,
-        type: 2}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 114212370230148892, guid: d28b12a61bf34ae4b8dfc346dbbbf811,
         type: 2}
       propertyPath: uiManager
@@ -921,12 +887,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224966226098035074, guid: d28b12a61bf34ae4b8dfc346dbbbf811,
     type: 2}
   m_PrefabInternal: {fileID: 752236184}
---- !u!114 &970708811 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114212370230148892, guid: d28b12a61bf34ae4b8dfc346dbbbf811,
-    type: 2}
-  m_PrefabInternal: {fileID: 752236184}
-  m_Script: {fileID: 11500000, guid: 439bef33a1cc14545abe7b4108087c55, type: 3}
 --- !u!1 &1121997787
 GameObject:
   m_ObjectHideFlags: 0
