@@ -77,6 +77,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RemoveAllPlayers()
+    {
+        toggles = playersPanel.GetComponentsInChildren<Toggle>();
+
+        foreach (Toggle t in toggles)
+        {
+            t.isOn = false;
+        }
+    }
+
     public void ResetGame()
     {
         if (players.Count == 0)
@@ -339,7 +349,7 @@ public class GameManager : MonoBehaviour
             if (finishedPlayers.Count - playersToRemove.Count == 1)
             {
                 string winner = string.Empty;
-                string[] loserNames = new string[players.Count -1];
+                string[] loserNames = new string[players.Count - 1];
                 playersUIs = playersPanel.GetComponentsInChildren<PlayerUIComponent>();
                 int i = 0;
 
@@ -349,7 +359,7 @@ public class GameManager : MonoBehaviour
 
                     if (players.Contains(playerData))
                     {
-                        ui.background.color = new Color(ui.background.color.r, ui.background.color.g, ui.background.color.b, 0f);
+                        ui.background.color = new Color(0f, 0f, 0f, 0f);
                         ui.IncrementPlayed();
 
                         if (losers.Contains(playerData) || playersToRemove.Any(x => x.GetPlayerGameobject.GetPlayerData == playerData))

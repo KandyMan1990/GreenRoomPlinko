@@ -33,6 +33,10 @@ public class Config : MonoBehaviour
     public void SetOrderPreference(bool value)
     {
         tableOrderPrefs.SetOrder(value);
+
+        if (GameManager.Instance)
+            GameManager.Instance.RemoveAllPlayers();
+
         uiManager.CreatePlayersList();
     }
 }
