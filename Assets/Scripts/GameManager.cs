@@ -364,7 +364,7 @@ public class GameManager : MonoBehaviour
 
                         if (losers.Contains(playerData) || playersToRemove.Any(x => x.GetPlayerGameobject.GetPlayerData == playerData))
                         {
-                            ui.IncreaseScore(players.Count - 1);
+                            ui.IncreaseScore(1);
                             loserNames[i] = playerData.Name;
                             i++;
                         }
