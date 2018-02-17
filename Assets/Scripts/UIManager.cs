@@ -77,6 +77,15 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void DeletePlayer(PlayerData pd)
+    {
+        Players.Remove(pd);
+
+        Data.Save(Players);
+
+        CreatePlayersList();
+    }
+
     public void AddNewPlayerButtonOnClick(string name)
     {
         if (Players.Count < 15)
@@ -97,6 +106,7 @@ public class UIManager : MonoBehaviour
     {
         GameObject go = Instantiate(PlayerUIPrefab, Panel);
         PlayerUIComponent ui = go.GetComponent<PlayerUIComponent>();
+        ui.SetUiManager(this);
 
         ui.CreateComponent(player);
     }

@@ -11,7 +11,10 @@ public class PlayerUIComponent : MonoBehaviour
     Text Score;
     [SerializeField]
     PlayerData playerData;
+    [SerializeField]
+    Button DeleteButton;
     public Image background;
+    UIManager uiManager;
 
     bool inGame;
 
@@ -48,10 +51,25 @@ public class PlayerUIComponent : MonoBehaviour
         PlayerName.text = playerData.Name;
         Played.text = playerData.Played.ToString();
         Score.text = playerData.Score.ToString();
+
+        if (DeleteButton)
+        {
+            DeleteButton.gameObject.SetActive(playerData.Played <= 0);
+        }
+    }
+
+    public void DeletePlayer()
+    {
+        uiManager.DeletePlayer(playerData);
     }
 
     public PlayerData GetPlayerData
     {
         get { return playerData; }
+    }
+
+    public void SetUiManager(UIManager manager)
+    {
+        uiManager = manager;
     }
 }
