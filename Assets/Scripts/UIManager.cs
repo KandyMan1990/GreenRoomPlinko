@@ -138,4 +138,18 @@ public class UIManager : MonoBehaviour
         CountdownText.gameObject.SetActive(false);
         RoundNumberText.gameObject.SetActive(false);
     }
+
+    public void ClearData()
+    {
+        foreach (PlayerData pd in Players)
+        {
+            pd.FreeGamesAvailable = 0;
+            pd.Played = 0;
+            pd.Score = 0;
+        }
+
+        Data.Save(Players);
+
+        CreatePlayersList();
+    }
 }

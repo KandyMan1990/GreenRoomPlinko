@@ -72,4 +72,9 @@ public class PlayerUIComponent : MonoBehaviour
     {
         uiManager = manager;
     }
+
+    public void DisableDeleteButton()
+    {
+        DeleteButton.gameObject.SetActive(false);
+    }
 }
