@@ -79,6 +79,8 @@ public class UIManager : MonoBehaviour
 
     public void DeletePlayer(PlayerData pd)
     {
+        GameManager.Instance.RemoveAllPlayers();
+
         Players.Remove(pd);
 
         Data.Save(Players);
