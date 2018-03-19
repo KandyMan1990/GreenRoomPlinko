@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Default: {fileID: 11400000, guid: 6d68a0cc52ee21242af5eebfd1e21d16, type: 2}
   Christmas: {fileID: 11400000, guid: 0d732b873b293844c9aa0448ab00544e, type: 2}
+  Easter: {fileID: 11400000, guid: 5577ed0c34e300240bd3c9f9455d2499, type: 2}

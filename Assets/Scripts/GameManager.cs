@@ -250,6 +250,8 @@ public class GameManager : MonoBehaviour
             losersText = string.Concat(losersText, losersArray[i], ".  ");
         }
 
+        losersText = losersText.Remove(losersText.Length - 2);
+
         loserText.text = losersText;
 
         foreach (Button btn in uiButtons)
