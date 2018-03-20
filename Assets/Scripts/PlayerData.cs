@@ -1,5 +1,7 @@
-﻿[System.Serializable]
-public class PlayerData
+﻿using System;
+
+[System.Serializable]
+public class PlayerData : IComparable<PlayerData>
 {
     public string Name;
     public int Played;
@@ -12,6 +14,23 @@ public class PlayerData
         Played = 0;
         Score = 0;
         FreeGamesAvailable = 0;
+    }
+
+    public int CompareTo(PlayerData other)
+    {
+        if (Score > other.Score)
+            return 1;
+
+        if (Score < other.Score)
+            return -1;
+
+        if (Played < other.Played)
+            return 1;
+
+        if (Played > other.Played)
+            return -1;
+
+        return 0;
     }
 
     public override string ToString()

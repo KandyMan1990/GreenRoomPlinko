@@ -55,7 +55,11 @@ public class UIManager : MonoBehaviour
 
         if (Players.Count > 0)
         {
-            Players = tableOrderPrefs.OrderByAscending ? Players.OrderBy(x => x.Score).Reverse().ToList() : Players.OrderBy(x => x.Score).ToList();
+            Players.Sort();
+            if (tableOrderPrefs.OrderByAscending)
+            {
+                Players.Reverse();
+            }
 
             if (Panel.childCount > 0)
             {
