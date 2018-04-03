@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
     Text RoundNumberText;
     [SerializeField]
     TableOrderPrefs tableOrderPrefs;
+    [SerializeField]
+    bool subscribeToAdmin;
 
     List<PlayerData> Players = new List<PlayerData>();
 
@@ -101,6 +103,7 @@ public class UIManager : MonoBehaviour
             InstantiateNewPlayer(pd);
 
             Commit();
+            CreatePlayersList();
         }
         else
         {
@@ -157,5 +160,26 @@ public class UIManager : MonoBehaviour
         Data.Save(Players);
 
         CreatePlayersList();
+    }
+
+    void OnAdminChanged()
+    {
+        if (!Admin.Instance.isActive)
+        {
+            Commit();
+            CreatePlayersList();
+        }
+    }
+
+    void OnEnable()
+    {
+        if (subscribeToAdmin)
+            Admin.OnAdminChanged += OnAdminChanged;
+    }
+
+    void OnDisable()
+    {
+        if (subscribeToAdmin)
+            Admin.OnAdminChanged -= OnAdminChanged;
     }
 }

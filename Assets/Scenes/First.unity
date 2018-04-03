@@ -2220,10 +2220,11 @@ MonoBehaviour:
   VersionText: {fileID: 1190973703}
   MajorVersion: 1
   MinorVersion: 2
-  Revision: 0
+  Revision: 1
   CountdownText: {fileID: 0}
   RoundNumberText: {fileID: 0}
   tableOrderPrefs: {fileID: 2136019550}
+  subscribeToAdmin: 0
 --- !u!4 &2136019548
 Transform:
   m_ObjectHideFlags: 0
