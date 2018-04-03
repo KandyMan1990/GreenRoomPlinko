@@ -51,11 +51,6 @@ public class PlayerUIComponent : MonoBehaviour
         PlayerName.text = playerData.Name;
         Played.text = playerData.Played.ToString();
         Score.text = playerData.Score.ToString();
-
-        if (DeleteButton)
-        {
-            DeleteButton.gameObject.SetActive(playerData.Played <= 0);
-        }
     }
 
     public void DeletePlayer()
@@ -71,10 +66,5 @@ public class PlayerUIComponent : MonoBehaviour
     public void SetUiManager(UIManager manager)
     {
         uiManager = manager;
-    }
-
-    public void DisableDeleteButton()
-    {
-        DeleteButton.gameObject.SetActive(false);
     }
 }
