@@ -11715,32 +11715,32 @@ Prefab:
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 480
       objectReference: {fileID: 0}
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
@@ -14251,7 +14251,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -465}
+  m_AnchoredPosition: {x: 0, y: -464.99997}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1711608293
@@ -17380,7 +17380,7 @@ MonoBehaviour:
   CountdownText: {fileID: 732395456}
   RoundNumberText: {fileID: 295795385}
   tableOrderPrefs: {fileID: 2136019549}
-  subscribeToAdmin: 1
+  admin: {fileID: 11400000, guid: 1a0285f000e5cc6458f920803c6acac7, type: 2}
 --- !u!4 &2136019548
 Transform:
   m_ObjectHideFlags: 0

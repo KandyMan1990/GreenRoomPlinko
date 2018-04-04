@@ -25,8 +25,7 @@ public class UIManager : MonoBehaviour
     Text RoundNumberText;
     [SerializeField]
     TableOrderPrefs tableOrderPrefs;
-    [SerializeField]
-    bool subscribeToAdmin;
+    [SerializeField] Admin admin;
 
     List<PlayerData> Players = new List<PlayerData>();
 
@@ -76,9 +75,12 @@ public class UIManager : MonoBehaviour
                 }
             }
 
+            int index = 0;
+
             foreach (PlayerData player in Players)
             {
-                InstantiateNewPlayer(player);
+                index++;
+                InstantiateNewPlayer(player, index);
             }
         }
     }
@@ -100,7 +102,7 @@ public class UIManager : MonoBehaviour
         {
             PlayerData pd = new PlayerData(name);
             Players.Add(pd);
-            InstantiateNewPlayer(pd);
+            InstantiateNewPlayer(pd, 0);
 
             Commit();
             CreatePlayersList();
@@ -111,13 +113,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void InstantiateNewPlayer(PlayerData player)
+    void InstantiateNewPlayer(PlayerData player, int index)
     {
         GameObject go = Instantiate(PlayerUIPrefab, Panel);
         PlayerUIComponent ui = go.GetComponent<PlayerUIComponent>();
         ui.SetUiManager(this);
 
-        ui.CreateComponent(player);
+        ui.CreateComponent(player, index);
     }
 
     public void SetCountdownText(int timer)
@@ -164,22 +166,19 @@ public class UIManager : MonoBehaviour
 
     void OnAdminChanged()
     {
-        if (!Admin.Instance.isActive)
-        {
-            Commit();
-            CreatePlayersList();
-        }
+        Commit();
+        CreatePlayersList();
     }
 
     void OnEnable()
     {
-        if (subscribeToAdmin)
+        if (admin)
             Admin.OnAdminChanged += OnAdminChanged;
     }
 
     void OnDisable()
     {
-        if (subscribeToAdmin)
+        if (admin)
             Admin.OnAdminChanged -= OnAdminChanged;
     }
 }

@@ -364,6 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4a7202e89f0344fb25adedee1acaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  admin: {fileID: 11400000, guid: 1a0285f000e5cc6458f920803c6acac7, type: 2}
 --- !u!114 &114374173869065912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -376,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableAdminBtnText: {fileID: 114042288810233622}
+  admin: {fileID: 11400000, guid: 1a0285f000e5cc6458f920803c6acac7, type: 2}
 --- !u!114 &114385034575298796
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -2,6 +2,7 @@
 
 public class AdminSubscriber : MonoBehaviour
 {
+    [SerializeField] Admin admin;
     [SerializeField] GameObject[] objects;
 
     void OnEnable()
@@ -23,7 +24,7 @@ public class AdminSubscriber : MonoBehaviour
     {
         if (objects.Length > 0)
         {
-            bool active = Admin.Instance.isActive;
+            bool active = admin.isActive;
 
             for (int i = 0; i < objects.Length; i++)
             {

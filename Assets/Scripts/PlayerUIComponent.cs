@@ -4,6 +4,8 @@ using UnityEngine.UI;
 public class PlayerUIComponent : MonoBehaviour
 {
     [SerializeField]
+    Text Position;
+    [SerializeField]
     Text PlayerName;
     [SerializeField]
     Text Played;
@@ -44,10 +46,11 @@ public class PlayerUIComponent : MonoBehaviour
         Score.text = playerData.Score.ToString();
     }
 
-    public void CreateComponent(PlayerData player)
+    public void CreateComponent(PlayerData player, int index)
     {
         playerData = player;
 
+        Position.text = index.ToString("00");
         PlayerName.text = playerData.Name;
         Played.text = playerData.Played.ToString();
         Score.text = playerData.Score.ToString();

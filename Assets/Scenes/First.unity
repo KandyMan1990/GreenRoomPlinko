@@ -194,46 +194,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &46082514
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 46082516}
-  - component: {fileID: 46082515}
-  m_Layer: 0
-  m_Name: Admin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &46082515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 46082514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 604211a731397fc4ea1b8da13ab02bc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &46082516
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 46082514}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &152890276
 Prefab:
   m_ObjectHideFlags: 0
@@ -1729,7 +1689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -476.115}
+  m_AnchoredPosition: {x: 0, y: -472.16}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1711608293
@@ -2044,8 +2004,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -26.046}
-  m_SizeDelta: {x: 480, y: 997.91}
+  m_AnchoredPosition: {x: 0, y: -30}
+  m_SizeDelta: {x: 480, y: 990}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2007457504
 CanvasRenderer:
@@ -2139,32 +2099,32 @@ Prefab:
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 480
       objectReference: {fileID: 0}
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224930915086409226, guid: 49baa485e6c5ce54f8bf0155a559d0ec,
         type: 2}
@@ -2224,7 +2184,7 @@ MonoBehaviour:
   CountdownText: {fileID: 0}
   RoundNumberText: {fileID: 0}
   tableOrderPrefs: {fileID: 2136019550}
-  subscribeToAdmin: 0
+  admin: {fileID: 0}
 --- !u!4 &2136019548
 Transform:
   m_ObjectHideFlags: 0
