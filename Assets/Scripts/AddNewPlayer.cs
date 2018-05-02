@@ -23,6 +23,8 @@ public class AddNewPlayer : MonoBehaviour
         uiManager.AddNewPlayerButtonOnClick(input.text);
 
         CloseAndClear();
+
+        GameManager.Instance.RemoveAllPlayers();
     }
 
     public void OnEnter()
