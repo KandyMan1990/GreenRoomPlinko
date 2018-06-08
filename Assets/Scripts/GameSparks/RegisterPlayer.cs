@@ -5,22 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class RegisterPlayer : MonoBehaviour
 {
-    [SerializeField] Text userName;
-    [SerializeField] InputField password, repeatPassword;
+    [SerializeField] InputField userName, password, repeatPassword, vertical, room;
 
     public void Register()
     {
-        Debug.Log("Registering");
-
-        if (userName.text == string.Empty || password.text == string.Empty || repeatPassword.text == string.Empty)
+        if (userName.text == string.Empty || password.text == string.Empty || repeatPassword.text == string.Empty || vertical.text == string.Empty || room.text == string.Empty)
         {
-            Debug.LogError("Empty username or password fields");
             return;
         }
 
         if (password.text != repeatPassword.text)
         {
-            Debug.LogError("Password does not match repeat password");
             return;
         }
 
@@ -31,26 +26,31 @@ public class RegisterPlayer : MonoBehaviour
             .Send((registrationResponse) => {
                 if (!registrationResponse.HasErrors)
                 {
-                    Debug.Log(string.Format("{0} Registered", userName.text));
-                    Debug.Log(string.Format("Authenticating {0}", userName.text));
-
-                    new AuthenticationRequest().SetUserName(userName.text).SetPassword(password.text).Send((authResponse) => {
+                    new AuthenticationRequest()
+                    .SetUserName(userName.text)
+                    .SetPassword(password.text)
+                    .Send((authResponse) => {
                         if (!authResponse.HasErrors)
                         {
-                            Debug.Log(string.Format("{0} Authenticated", userName.text));
-                            SceneManager.LoadScene(1);
-                        }
-                        else
-                        {
-                            Debug.LogError("Error Authenticating Player");
-                            Debug.LogError(authResponse.Errors);
+                            new LogEventRequest()
+                            .SetEventKey("SAVE_PLAYER")
+                            .SetEventAttribute("PLAYED", 0)
+                            .SetEventAttribute("WON", 0)
+                            .SetEventAttribute("LOST", 0)
+                            .SetEventAttribute("MADE", 0)
+                            .SetEventAttribute("RECEIVED", 0)
+                            .SetEventAttribute("AVERAGE", 0)
+                            .SetEventAttribute("VERTICAL", vertical.text)
+                            .SetEventAttribute("ROOM", room.text)
+                            .Send((response) =>
+                            {
+                                if (!response.HasErrors)
+                                {
+                                    SceneManager.LoadScene(1);
+                                }
+                            });   
                         }
                     });
-                }
-                else
-                {
-                    Debug.LogError("Error Registering Player");
-                    Debug.LogError(registrationResponse.Errors);
                 }
             });
     }
