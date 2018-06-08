@@ -220,7 +220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1971330484936574
 GameObject:
   m_ObjectHideFlags: 1
@@ -346,8 +346,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userName: {fileID: 114945165512290208}
-  password: {fileID: 114437458094347958}
-  repeatPassword: {fileID: 114864935340669208}
+  password: {fileID: 114515979012525890}
+  repeatPassword: {fileID: 114450931999603496}
 --- !u!114 &114213136750346342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -479,8 +479,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114586471061775972}
   m_TextComponent: {fileID: 114864935340669208}
   m_Placeholder: {fileID: 114713797145463258}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -542,8 +542,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114627114222407608}
   m_TextComponent: {fileID: 114437458094347958}
   m_Placeholder: {fileID: 114335795781068656}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0

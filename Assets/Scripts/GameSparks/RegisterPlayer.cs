@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class RegisterPlayer : MonoBehaviour
 {
-    [SerializeField] Text userName, password, repeatPassword;
+    [SerializeField] Text userName;
+    [SerializeField] InputField password, repeatPassword;
 
     public void Register()
     {
