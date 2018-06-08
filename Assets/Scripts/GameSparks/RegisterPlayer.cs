@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using GameSparks.Api.Requests;
 using UnityEngine.SceneManagement;
+using GameSparks.Api.Requests;
 
 public class RegisterPlayer : MonoBehaviour
 {
