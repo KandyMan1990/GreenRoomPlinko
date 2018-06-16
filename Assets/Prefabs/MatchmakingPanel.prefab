@@ -268,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableMatchPrefab: {fileID: 1956883479838838, guid: e829a21ff409d614aa81610bead0a2e7,
     type: 2}
+  availableGamesPanel: {fileID: 224618990653730562}
 --- !u!114 &114992278007270864
 MonoBehaviour:
   m_ObjectHideFlags: 1
