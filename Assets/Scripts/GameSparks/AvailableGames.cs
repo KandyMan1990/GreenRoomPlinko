@@ -15,7 +15,6 @@ public class AvailableGames : MonoBehaviour
     WaitForSeconds wait;
     List<string> shortCodes;
 
-    // Use this for initialization
     void Start()
     {
         wait = new WaitForSeconds(5f);

@@ -23,8 +23,6 @@ public class UIManager : MonoBehaviour
     Text CountdownText;
     [SerializeField]
     Text RoundNumberText;
-    [SerializeField]
-    TableOrderPrefs tableOrderPrefs;
     [SerializeField] Admin admin;
 
     List<PlayerData> Players = new List<PlayerData>();
@@ -57,10 +55,6 @@ public class UIManager : MonoBehaviour
         if (Players.Count > 0)
         {
             Players.Sort();
-            if (tableOrderPrefs.OrderByAscending)
-            {
-                Players.Reverse();
-            }
 
             if (Panel.childCount > 0)
             {

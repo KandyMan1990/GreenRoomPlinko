@@ -9,6 +9,7 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] Text Name, Played, Won, Lost, Made, Received, Average, Vertical, Room;
     GSData loadData;
     AccountDetailsResponse accountData;
+    User user;
 
     void Start()
     {
@@ -20,17 +21,30 @@ public class PlayerInfo : MonoBehaviour
             {
                 if (!loadResponse.HasErrors)
                 {
+                    user = new User();
                     loadData = loadResponse.ScriptData.GetGSData("playerData");
 
-                    Name.text = accountData.DisplayName;
-                    Played.text = loadData.GetNumber("played").ToString();
-                    Won.text = loadData.GetNumber("won").ToString();
-                    Lost.text = loadData.GetNumber("lost").ToString();
-                    Made.text = loadData.GetNumber("made").ToString();
-                    Received.text = loadData.GetNumber("received").ToString();
-                    Average.text = loadData.GetNumber("average").ToString();
-                    Vertical.text = loadData.GetString("vertical");
-                    Room.text = loadData.GetString("room");
+                    user.Name = accountData.DisplayName;
+                    user.Played = (int)loadData.GetNumber("played");
+                    user.Won = (int)loadData.GetNumber("won");
+                    user.Lost = (int)loadData.GetNumber("lost");
+                    user.Made = (int)loadData.GetNumber("made");
+                    user.Received = (int)loadData.GetNumber("received");
+                    user.Average = (int)loadData.GetNumber("average");
+                    user.Vertical = loadData.GetString("vertical");
+                    user.Room = loadData.GetString("room");
+
+                    UserData.Save(user);
+
+                    Name.text = user.Name;
+                    Played.text = user.Played.ToString();
+                    Won.text = user.Won.ToString();
+                    Lost.text = user.Lost.ToString();
+                    Made.text = user.Made.ToString();
+                    Received.text = user.Received.ToString();
+                    Average.text = user.Average.ToString();
+                    Vertical.text = user.Vertical;
+                    Room.text = user.Room;
                 }
             });
         });
