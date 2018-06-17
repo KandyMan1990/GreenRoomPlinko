@@ -58,10 +58,15 @@ public class AvailableGames : MonoBehaviour
                                 .SetChallengeInstanceId(item.ChallengeId)
                                 .SetMessage(string.Empty)
                                 .Send((response) => {
+                                    User user = UserData.Load();
+                                    user.ChallengeId = item.ChallengeId;
+                                    UserData.Save(user);
+
                                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                                 });
                         });
                         go.SetActive(true);
+                        i++;
                     }
                 });
 

@@ -63,6 +63,8 @@ public class User
     public int Average { get; set; }
     public string Vertical { get; set; }
     public string Room { get; set; }
+    public string ChallengeId { get; set; }
+    public bool isChallenger { get; set; }
 
     public User()
     {
@@ -75,5 +77,7 @@ public class User
         Made = 0;
         Received = 0;
         Average = 0;
+        ChallengeId = string.Empty;
+        isChallenger = false;
     }
 }
