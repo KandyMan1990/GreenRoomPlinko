@@ -434,7 +434,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Won
+  m_Text: 'Won:'
 --- !u!114 &114178918814164128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -824,7 +824,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lost
+  m_Text: 'Lost:'
 --- !u!114 &114681360445419668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -878,6 +878,7 @@ MonoBehaviour:
   Average: {fileID: 114234052303092522}
   Vertical: {fileID: 114564507064432086}
   Room: {fileID: 114725690819195612}
+  user: {fileID: 11400000, guid: e4e201b1dc472ac4e83fbe596ab830a1, type: 2}
 --- !u!114 &114725690819195612
 MonoBehaviour:
   m_ObjectHideFlags: 1

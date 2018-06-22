@@ -13,30 +13,30 @@ public class UIPlayerPanel : MonoBehaviour
     // stop listening once game starts
     void Start()
     {
-        User user = UserData.Load();
+    //    User user = UserData.Load();
 
-        List<string> shortCodes;
-        shortCodes = new List<string>();
-        shortCodes.Add("PLINKO");
+    //    List<string> shortCodes;
+    //    shortCodes = new List<string>();
+    //    shortCodes.Add("PLINKO");
 
-        new FindChallengeRequest()
-    .SetAccessType("PUBLIC")
-    .SetShortCode(shortCodes)
-    .Send((requestResponse) =>
-    {
-        GSEnumerable<FindChallengeResponse._Challenge> challengeInstances = requestResponse.ChallengeInstances;
+    //    new FindChallengeRequest()
+    //.SetAccessType("PUBLIC")
+    //.SetShortCode(shortCodes)
+    //.Send((requestResponse) =>
+    //{
+    //    GSEnumerable<FindChallengeResponse._Challenge> challengeInstances = requestResponse.ChallengeInstances;
 
-        foreach (FindChallengeResponse._Challenge item in challengeInstances)
-        {
-            Debug.Log(item);
-        }
-    });
+    //    foreach (FindChallengeResponse._Challenge item in challengeInstances)
+    //    {
+    //        Debug.Log(item);
+    //    }
+    //});
 
-        new GetChallengeRequest()
-            .SetChallengeInstanceId(user.ChallengeId)
-            .Send((response) => {
-                Debug.Log(response.HasErrors);
-            });
+    //    new GetChallengeRequest()
+    //        .SetChallengeInstanceId(user.ChallengeId)
+    //        .Send((response) => {
+    //            Debug.Log(response.HasErrors);
+    //        });
 
     }
 }

@@ -43,10 +43,6 @@ public class CreateGame : MonoBehaviour
                         .SetMinPlayers(2)
                         .Send((response) =>
                         {
-                            User user = UserData.Load();
-                            user.ChallengeId = response.ChallengeInstanceId;
-                            user.isChallenger = true;
-                            UserData.Save(user);
                             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                         });
                 }

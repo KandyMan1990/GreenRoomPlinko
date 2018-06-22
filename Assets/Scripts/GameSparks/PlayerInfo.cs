@@ -7,9 +7,9 @@ using GameSparks.Core;
 public class PlayerInfo : MonoBehaviour
 {
     [SerializeField] Text Name, Played, Won, Lost, Made, Received, Average, Vertical, Room;
+    [SerializeField] User user;
     GSData loadData;
     AccountDetailsResponse accountData;
-    User user;
 
     void Start()
     {
@@ -21,7 +21,6 @@ public class PlayerInfo : MonoBehaviour
             {
                 if (!loadResponse.HasErrors)
                 {
-                    user = new User();
                     loadData = loadResponse.ScriptData.GetGSData("playerData");
 
                     user.Name = accountData.DisplayName;
@@ -33,8 +32,6 @@ public class PlayerInfo : MonoBehaviour
                     user.Average = (int)loadData.GetNumber("average");
                     user.Vertical = loadData.GetString("vertical");
                     user.Room = loadData.GetString("room");
-
-                    UserData.Save(user);
 
                     Name.text = user.Name;
                     Played.text = user.Played.ToString();

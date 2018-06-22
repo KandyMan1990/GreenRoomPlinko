@@ -4,11 +4,12 @@ public class EnableButtons : MonoBehaviour
 {
     void Start()
     {
-        User user = UserData.Load();
+        // check if player is host
+        //User user = UserData.Load();
         
-        if (!user.isChallenger)
-        {
-            gameObject.SetActive(false);
-        }
+        //if (!user.isChallenger)
+        //{
+        //    gameObject.SetActive(false);
+        //}
     }
 }
