@@ -47,7 +47,7 @@ public class PlinkoNetworkDiscovery : NetworkDiscovery
         broadcastData = plinkoBroadcastData.SaveToString();
 
         StartAsServer();
-        NetworkManager.singleton.StartHost();
+        NetworkManager.singleton.StartHost(NetworkManager.singleton.connectionConfig, 10);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
